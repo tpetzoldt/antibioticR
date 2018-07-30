@@ -1,5 +1,6 @@
 # antibioticR
-R package to estimate antibiotic resistance cutoff values from ZD and MIC distributions of environmental samples 
+
+is an **R package** to estimate antibiotic resistance cutoff values from ZD and MIC distributions of environmental samples 
 
 The package aims to improve the accesibility to statistical methods for analysing populations of resistant and non-resistant bacteria from an environmental, i.e. non-clinical perspective. The methods are intended to describe sensitivity, tolerance and resistance on a sub-acute level in order to compare populations of different origin on gradual scales.
 
@@ -27,7 +28,7 @@ Download and Installation
 
 ### Release version
 
-The package is not yet released
+The package is not yet released.
 
 
 ### Development version
@@ -37,3 +38,4 @@ Install with package devtools:
     install.packages("devtools")
     library(devtools)
     install_github("tpetzoldt/antibioticR")
+
