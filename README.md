@@ -39,3 +39,10 @@ Install with package devtools:
     library(devtools)
     install_github("tpetzoldt/antibioticR")
 
+Documentation
+-------------
+
+The documentation is still to be written. An initial version is found here:
+
+https://rawgit.com/tpetzoldt/antibioticR/master/vignettes/Introduction.html
+
