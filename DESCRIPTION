@@ -1,0 +1,55 @@
+Package: antibioticR
+Type: Package
+Title: Analysis of Antibiotic Resistance Data
+Version: 0.3.1
+Date: 2018-07-30
+Author: Thomas Petzoldt
+Encoding: UTF-8
+Maintainer: Thomas Petzoldt <thomas.petzoldt@tu-dresden.de>
+Description: Antibiotic resistant bacteria are a serious threat to human health. 
+  This package aims to collect tools and functions to analyze environmental resistance
+  data, especially minimal inhibitory concentration ('MIC') and inhibition zone
+  diameters ('ZD').
+License: GPL (>= 2)
+RoxygenNote: 6.0.1
+Depends: reshape2, methods
+Imports:  bbmle, evmix
+Suggests: knitr, dplyr, ggplot2, shiny
+VignetteBuilder: knitr
+Collate: 
+    'ECOFFinder.R'
+    'aaa_oldclasses.R'
+    'abr_baseclass.R'
+    'abr_densfunctions.R'
+    'abr_methods.R'
+    'abr_quantile.R'
+    'abr_summary.R'
+    'antibioticR-internal.R'
+    'antibioticR-package.R'
+    'ecoffinder-internal-plot-decoff.R'
+    'ecoffinder-internal-plot-pecoff.R'
+    'ecoffinder-plot-methods.R'
+    'ecoffinder_nls.R'
+    'ecoffinder_startpar.R'
+    'fit_unimix.R'
+    'guess_components.R'
+    'micdata.R'
+    'mixParmDf2parmlist.R'
+    'mxObj-class.R'
+    'mxObj-methods.R'
+    'mxObj-coerce.R'
+    'mx_compare.R'
+    'mx_diagnostics.R'
+    'mx_metafit.R'
+    'mx_parmlist_sort.R'
+    'mx_plot.R'
+    'mx_results.R'
+    'parmList.R'
+    'peakwindow.R'
+    'turnpoints.R'
+    'unbin.R'
+    'unimix-distributions-internal.R'
+    'unimix-methods.R'
+    'utilities-internal.R'
+    'weighted.sd.R'
+    'zd_main_components.R'
