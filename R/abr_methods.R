@@ -13,7 +13,6 @@
 #'   parameters is returned and printed.
 #' @param \dots other arguments passed to the methods.
 #'
-#' Note: this is a still dysfunctional template.
 #'
 #' @rdname abr_methods
 #' @exportMethod obs
@@ -125,8 +124,8 @@ setMethod("models", "abr_ecoffinder",
 #'
 setMethod("ecoff", "abr_ecoffinder",
           function(object, ...) {
-            if (object@log2)
-              cat("Note: log2 used for the transformation of MIC data!")
+            #if (object@log2)
+              #cat("Note: log2 used for the transformation of MIC data!\n")
             object@ecoff
           }
 )

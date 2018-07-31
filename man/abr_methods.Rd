@@ -38,9 +38,7 @@ obs(object, ...)
 \item{object}{name of a 'antibioticR' object.
 parameters is returned and printed.}
 
-\item{\dots}{other arguments passed to the methods.
-
-Note: this is a still dysfunctional template.}
+\item{\dots}{other arguments passed to the methods.}
 }
 \description{
 Functions to access data and results of fitted antibioticR objects:

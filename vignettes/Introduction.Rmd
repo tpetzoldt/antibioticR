@@ -90,7 +90,9 @@ we load the data and inspect its structure with `str`:
 Identification of the wild-type population
 ==========================================
 
-The wild type population is defined as the population ...
+The wild type population is defined as "an isolate that it is 
+devoid of phenotypically detectable acquired resistance mechanisms to a 
+specified antimicrobial agent." [@Kahlmeter2018]
 
 ECOFFinder
 ----------
@@ -184,15 +186,26 @@ observations <- unbin(breaks[-1], counts) # upper class boundaries
 obj <- mxObj(comp, left="e")
 
 obj2 <- mx_metafit(breaks, counts, obj)
-
-mx_plot(obj2, breaks, counts, disc=5.5)
-
-## simplification for fitted objects with save.data = TRUE
-
-mx_plot(obj2, disc=5.5, main="Univariate Mixture Distribution-Approach", xlab="ZD (mm)")
-
 ```
 
+The results can then be plotted with function `mx_plot`. The optional `disc` 
+argument adds the diameter of the antibiotic disc.
+
+```{r}
+mx_plot(obj2, disc=5.5, main="Univariate Mixture Distribution-Approach", xlab="ZD (mm)")
+```
+
+Numerical results can be obtained with:
+
+```{r}
+summary(obj2)
+```
+
+or with:
+
+```{r}
+results(obj2)
+```
 
 
 
