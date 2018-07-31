@@ -38,6 +38,14 @@ Install with package devtools:
     install.packages("devtools")
     library(devtools)
     install_github("tpetzoldt/antibioticR")
+	
+	
+Demo
+----
+
+A live demo of the ECOFFinder approach can be found	at:
+
+http://limno-live.hydro.tu-dresden.de/ecoffinder/
 
 Documentation
 -------------
