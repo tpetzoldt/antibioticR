@@ -55,7 +55,10 @@ mx_guess_components <- function(x, bw=1, minpeak=0, mincut=0.9, ...) {
     #cat(i, "\n")
     yi <- dens.split[[i]]$y
     xi <- dens.split[[i]]$x
-    sds[i] <- weighted.sd(xi, yi)
+    # still wrong
+    #sds[i] <- weighted.sd(xi, yi, df=length(xi)) # !!! important, see stats::cov.wt
+    # alternative:
+    sds[i] <- sqrt(cov.wt(data.frame(xi), yi)$cov[1])
     L[i] <- sum(yi)
   }
 
