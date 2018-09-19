@@ -5,7 +5,7 @@
 #' @param save.data if data should be included in the returned object
 #' @param parms list of initial parameters for the mixture, or a suitable
 #'   \code{\link{mxObj}}ect with start parameters
-#' @param ... additional arguments passed to \code{mle2} and \code{optim}
+#' @param ... additional arguments passed to \code{\link{mle2}} and \code{\link{optim}}
 #'
 ## #' @return
 #'
@@ -90,7 +90,9 @@ mx_metafit <- function(breaks, counts, parms, save.data=TRUE, ...) {
       # calculate start values directly, ignore given values
       mids <- 0.5*(breaks[-1] + breaks[-length(breaks)])
       vpstart <- list(mean1 = weighted.mean(mids, counts),
-                      sd1   = weighted.sd(mids, counts))
+                      #sd1   = weighted.sd(mids, counts)
+                      sd1    = sqrt(cov.wt(data.frame(mids), counts)$cov[1])
+                      )
       fit <- fit_n(breaks, counts, parms=vpstart)
     } else {
       fit <-fit_unimix(breaks, counts, vpstart, type, ...)

@@ -28,7 +28,7 @@
 #' @export
 #'
 fit_unimix <- function(breaks, counts, parms,
-  type=c("n", "en", "enn", "ennn", "ennnn", "nn", "nnn", "nnnn"), ...) {
+  type=c("en", "enn", "ennn", "ennnn", "n", "nn", "nnn", "nnnn", "nnnnn"), ...) {
 
   # todo:
   ## argument checking
@@ -59,8 +59,9 @@ fit_n <- function(breaks, counts, parms, ...) {
 #'
 fit_en <- function(breaks, counts, parms, ...) {
   llunimix <- function(L1, rate1, mean2, sd2) {
-    if ((L1 < 0) | (L1 > 1)) {
-      NA
+    if ((L1 < 0) | (L1 > 1) | rate1 <= 0 | sd2 <=0) {
+      ## penalty for wrong parameters
+      1e-9 * .Machine$double.xmax
     } else {
       plist <- list(
         e1 = list(type="e", L = L1, rate=rate1),
@@ -80,8 +81,9 @@ fit_en <- function(breaks, counts, parms, ...) {
 #'
 fit_nn <- function(breaks, counts, parms, ...) {
   llunimix <- function(L1, mean1, sd1, mean2, sd2) {
-    if ((L1 < 0) | (L1 > 1)) {
-      NA
+    if ((L1 < 0) | (L1 > 1) | sd1 <=0 | sd2 <=0) {
+      ## penalty for wrong parameters
+      1e-9 * .Machine$double.xmax
     } else {
       L1 <- max(L1, 0) # force non-negativity
       plist <- list(
@@ -103,8 +105,10 @@ fit_nn <- function(breaks, counts, parms, ...) {
 #'
 fit_enn <- function(breaks, counts, parms, ...) {
   llunimix <- function(L1, L2, rate1, mean2, sd2, mean3, sd3) {
-    if (L1 < 0 | L2 < 0 | abs(L1) + abs(L2) > 1 | rate1 <= 0) { # test: rate <=0
-      NA
+    if (L1 < 0 | L2 < 0 | abs(L1) + abs(L2) > 1 | rate1 <= 0
+        | rate1 <= 0 | sd2 <= 0 | sd3 <= 0) { # test: rate or sd <=0
+      ## penalty for wrong parameters
+      1e-9 * .Machine$double.xmax
     } else {
       #L1 <- max(L1, 0) # force non-negativity
       plist <- list(
@@ -126,8 +130,10 @@ fit_enn <- function(breaks, counts, parms, ...) {
 #'
 fit_nnn <- function(breaks, counts, parms, ...) {
   llunimix <- function(L1, L2, mean1, sd1, mean2, sd2, mean3, sd3) {
-    if (L1 < 0 | L2 < 0 | abs(L1) + abs(L2) > 1 ) {
-      NA
+    if (L1 < 0 | L2 < 0 | abs(L1) + abs(L2) > 1
+        | sd1 <=0 | sd2 <=0 | sd3 <=0) {
+      ## penalty for wrong parameters
+      1e-9 * .Machine$double.xmax
     } else {
       #L1 <- max(L1, 0) # force non-negativity
       plist <- list(
@@ -149,8 +155,10 @@ fit_nnn <- function(breaks, counts, parms, ...) {
 #'
 fit_nnnn <- function(breaks, counts, parms, ...) {
   llunimix <- function(L1, L2, L3, mean1, sd1, mean2, sd2, mean3, sd3, mean4, sd4) {
-    if (L1 < 0 | L2 < 0 | L3 < 0 | abs(L1) + abs(L2) +abs(L3) > 1 ) {
-      NA
+    if (L1 < 0 | L2 < 0 | L3 < 0 | abs(L1) + abs(L2) +abs(L3) > 1
+        | sd1 <=0 | sd2 <=0 | sd3 <=0 | sd4 <= 0) {
+      ## penalty for wrong parameters
+      1e-9 * .Machine$double.xmax
     } else {
       #L1 <- max(L1, 0) # force non-negativity
       plist <- list(
@@ -174,8 +182,11 @@ fit_nnnn <- function(breaks, counts, parms, ...) {
 #'
 fit_ennn <- function(breaks, counts, parms, ...) {
   llunimix <- function(L1, L2, L3, rate1, mean2, sd2, mean3, sd3, mean4, sd4) {
-    if (L1 < 0 | L2 < 0 | L3 < 0 | abs(L1) + abs(L2) + abs(L3) > 1 ) {
-      NA
+    if (L1 < 0 | L2 < 0 | L3 < 0 | abs(L1) + abs(L2) + abs(L3) > 1
+        | rate1 <= 0 | sd2 <= 0 | sd3 <= 0 | sd4 <= 0
+      ) {
+      ## penalty for wrong parameters
+      1e-9 * .Machine$double.xmax
     } else {
       #L1 <- max(L1, 0) # force non-negativity
       plist <- list(
@@ -198,12 +209,41 @@ fit_ennn <- function(breaks, counts, parms, ...) {
 #'
 fit_ennnn <- function(breaks, counts, parms, ...) {
   llunimix <- function(L1, L2, L3, L4, rate1, mean2, sd2, mean3, sd3, mean4, sd4, mean5, sd5) {
-    if (L1 < 0 | L2 < 0 | L3 < 0 | L4 < 0 | abs(L1) + abs(L2) + abs(L3) + abs(L4) > 1 ) {
-      NA
+    if (L1 < 0 | L2 < 0 | L3 < 0 | L4 < 0 | abs(L1) + abs(L2) + abs(L3) + abs(L4) > 1
+        | rate1 <= 0 | sd2 <= 0 | sd3 <= 0 | sd4 <= 0 | sd5 <= 0) {
+      ## penalty for wrong parameters
+      1e-9 * .Machine$double.xmax
     } else {
       #L1 <- max(L1, 0) # force non-negativity
       plist <- list(
         e1 = list(type="e", L = L1, rate=rate1),
+        n2 = list(type="n", L = L2, mean=mean2, sd=sd2),
+        n3 = list(type="n", L = L3, mean=mean3, sd=sd3),
+        n4 = list(type="n", L = L4, mean=mean4, sd=sd4),
+        n5 = list(type="n", L = 1 - L1 - L2 - L3 - L4, mean=mean5, sd=sd5)
+      )
+      z <- .punimix(breaks, plist)
+      return(- wsum(log(diff(z)), counts))
+    }
+  }
+  parms$L5 <- NULL # in case it exists, because last L is difference to 1
+  mle2(llunimix, start=parms, ...)
+}
+
+## maximum likelihood fit of exponential-normal-normal-normal-mixtures
+#' @rdname fit_unimix
+#' @export
+#'
+fit_nnnnn <- function(breaks, counts, parms, ...) {
+  llunimix <- function(L1, L2, L3, L4, mean1, sd1, mean2, sd2, mean3, sd3, mean4, sd4, mean5, sd5) {
+    if (L1 < 0 | L2 < 0 | L3 < 0 | L4 < 0 | abs(L1) + abs(L2) + abs(L3) + abs(L4) > 1
+        | sd1 <= 0 | sd2 <= 0 | sd3 <= 0 | sd4 <= 0 | sd5 <= 0) {
+      ## penalty for wrong parameters
+      1e-9 * .Machine$double.xmax
+    } else {
+      #L1 <- max(L1, 0) # force non-negativity
+      plist <- list(
+        n1 = list(type="n", L = L1, mean=mean1, sd=sd1),
         n2 = list(type="n", L = L2, mean=mean2, sd=sd2),
         n3 = list(type="n", L = L3, mean=mean3, sd=sd3),
         n4 = list(type="n", L = L4, mean=mean4, sd=sd4),

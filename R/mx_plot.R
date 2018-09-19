@@ -76,7 +76,7 @@ mx_plot <- function(obj, breaks, counts, disc=0, ecoff.prob=0.01,
   wt <- mx_wildtype(obj, as.vector=FALSE)
 
 
-  if (!is.na(it$type))
+  if (!any(is.na(it)))
     lines(x1, it$L * dnorm(x1 - disc, it$mean, it$sd), lwd=2, col=colors[7], lty=1)
 
   if (!is.null(wt$type))
