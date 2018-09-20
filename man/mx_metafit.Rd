@@ -16,7 +16,7 @@ mx_metafit(breaks, counts, parms, save.data = TRUE, ...)
 
 \item{save.data}{if data should be included in the returned object}
 
-\item{...}{additional arguments passed to \code{mle2} and \code{optim}}
+\item{...}{additional arguments passed to \code{\link{mle2}} and \code{\link{optim}}}
 }
 \description{
 Fit Mixture Distribution to Data and Evaluate Results

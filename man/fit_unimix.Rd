@@ -10,10 +10,12 @@
 \alias{fit_nnnn}
 \alias{fit_ennn}
 \alias{fit_ennnn}
+\alias{fit_nnnnn}
+\alias{fit_ennnnn}
 \title{Fit of Normal and Exponential-Normal Mixtures to Binned Data}
 \usage{
-fit_unimix(breaks, counts, parms, type = c("n", "en", "enn", "ennn", "ennnn",
-  "nn", "nnn", "nnnn"), ...)
+fit_unimix(breaks, counts, parms, type = c("en", "enn", "ennn", "ennnn", "n",
+  "nn", "nnn", "nnnn", "nnnnn"), ...)
 
 fit_n(breaks, counts, parms, ...)
 
@@ -30,6 +32,10 @@ fit_nnnn(breaks, counts, parms, ...)
 fit_ennn(breaks, counts, parms, ...)
 
 fit_ennnn(breaks, counts, parms, ...)
+
+fit_nnnnn(breaks, counts, parms, ...)
+
+fit_ennnnn(breaks, counts, parms, ...)
 }
 \arguments{
 \item{breaks}{upper class limits of the data}

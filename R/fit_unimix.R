@@ -28,7 +28,7 @@
 #' @export
 #'
 fit_unimix <- function(breaks, counts, parms,
-  type=c("en", "enn", "ennn", "ennnn", "n", "nn", "nnn", "nnnn", "nnnnn"), ...) {
+  type=c("en", "enn", "ennn", "ennnn", "ennnnn", "n", "nn", "nnn", "nnnn", "nnnnn"), ...) {
 
   # todo:
   ## argument checking
@@ -254,5 +254,33 @@ fit_nnnnn <- function(breaks, counts, parms, ...) {
     }
   }
   parms$L5 <- NULL # in case it exists, because last L is difference to 1
+  mle2(llunimix, start=parms, ...)
+}
+
+## maximum likelihood fit of exponential-normal-normal-normal-mixtures
+#' @rdname fit_unimix
+#' @export
+#'
+fit_ennnnn <- function(breaks, counts, parms, ...) {
+  llunimix <- function(L1, L2, L3, L4, L5, rate1, mean2, sd2, mean3, sd3, mean4, sd4, mean5, sd5, mean6, sd6) {
+    if (L1 < 0 | L2 < 0 | L3 < 0 | L4 < 0 | L5 < 0| abs(L1) + abs(L2) + abs(L3) + abs(L4) + abs(L5) > 1
+        | rate1 <= 0 | sd2 <= 0 | sd3 <= 0 | sd4 <= 0 | sd5 <= 0 | sd6 <=0 ) {
+      ## penalty for wrong parameters
+      1e-9 * .Machine$double.xmax
+    } else {
+      #L1 <- max(L1, 0) # force non-negativity
+      plist <- list(
+        e1 = list(type="e", L = L1, rate=rate1),
+        n2 = list(type="n", L = L2, mean=mean2, sd=sd2),
+        n3 = list(type="n", L = L3, mean=mean3, sd=sd3),
+        n4 = list(type="n", L = L4, mean=mean4, sd=sd4),
+        n5 = list(type="n", L = L5, mean=mean5, sd=sd5),
+        n6 = list(type="n", L = 1 - L1 - L2 - L3 - L4 - L5, mean=mean6, sd=sd6)
+      )
+      z <- .punimix(breaks, plist)
+      return(- wsum(log(diff(z)), counts))
+    }
+  }
+  parms$L6 <- NULL # in case it exists, because last L is difference to 1
   mle2(llunimix, start=parms, ...)
 }
