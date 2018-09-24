@@ -44,9 +44,17 @@ fit_unimix <- function(breaks, counts, parms,
 #'
 fit_n <- function(breaks, counts, parms, ...) {
   llunimix <- function(mean1, sd1) {
-    z <- pnorm(breaks, mean1, sd1)
-    #return(- sum(counts * log(diff(z))))
-    return(- wsum(log(diff(z)), counts))
+    if (sd1 <= 0 ) {
+      ## penalty for wrong parameters
+      1e-9 * .Machine$double.xmax
+    } else {
+      z <- pnorm(breaks, mean1, sd1)
+      ret <- - wsum(log(diff(z)), counts)
+      if(is.infinite(ret)) {
+        ret <- 1e99 # fixme! cannot be much higher
+      }
+      ret
+    }
   }
   parms$L1 <- NULL # in case it exists; L=1 in case of 1 component
   mle2(llunimix, start=parms, ...)
