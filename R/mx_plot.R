@@ -68,7 +68,7 @@ mx_plot <- function(obj, breaks, counts, disc=0, ecoff.prob=0.01,
   hist(x, breaks=breaks, probability=TRUE, main=main, ...)
 
   #1st column is x, last is sum
-  matlines(xy[, 1], xy[,-c(1,  ncol(xy))], lty=1, lwd=1, col="grey")
+  matlines(xy[, 1], xy[,-c(1,  ncol(xy))], lty=1, lwd=2, col=colors[7])
 
   if ("e1" %in% nm) lines(xy[,1], xy[,"e1"], lwd=2, col=colors[6], lty=1)
 
