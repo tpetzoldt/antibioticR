@@ -92,7 +92,7 @@ ecoffinder_nls <- function(conc, count, startpar="mode", concentrations=NA, log2
   ## fit full data set
   ## todo: handle warning, because of warnOnly=TRUE
   m <- nls(cumCount ~ fnorm(conc, mean, sd, K), data=data, start=pstart,
-           control=nls.control(warnOnly=TRUE))
+           control=nls.control(maxiter=1000, warnOnly=TRUE))
 
   if (plot) lines(x, predict(m, newdata=list(conc=x)), col="green")
 
@@ -111,7 +111,8 @@ ecoffinder_nls <- function(conc, count, startpar="mode", concentrations=NA, log2
     ## idea: estimate pstart locally for subsets
     # pstart <- c(mean=mean, sd=sd, K=K)
 
-    m <- nls(cumCount ~ fnorm(conc, mean, sd, K), data=subset, start=pstart)
+    m <- nls(cumCount ~ fnorm(conc, mean, sd, K), data=subset, start=pstart,
+             control=nls.control(maxiter=1000, warnOnly=TRUE))
 
     models[[i]] <- m
 

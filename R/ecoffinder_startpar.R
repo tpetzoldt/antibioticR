@@ -74,9 +74,10 @@ ecoffinder_startpar <- function(x, y, method = c("peak1", "mode", "mean"), bw = 
     ret <- c(mean=mode, sd=sd, K=sum(y))
   } else {
     ret <- c(
-      mean <- weighted.mean(x, y),
-      sd <- weighted.sd(x, y),
-      K  <- sum(y)
+      mean = weighted.mean(x, y),
+      #sd = weighted.sd(x, y),
+      sd = sqrt(cov.wt(data.frame(x), y)$cov[1]),
+      K = sum(y)
     )
   }
   return(ret)

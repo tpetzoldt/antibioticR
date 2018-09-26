@@ -2,7 +2,11 @@
 
 ## A trivial helper function that just multiplies the results of pnorm with fmax.
 fnorm <- function(x, mean, sd, fmax) {
-  pnorm(x, mean=mean, sd=sd) * fmax
+  if (sd <= 0) {
+    return(rep(1e99, length(x))) # <-- fixme
+  } else {
+    pnorm(x, mean=mean, sd=sd) * fmax
+  }
 }
 
 
