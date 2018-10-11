@@ -10,3 +10,4 @@ Classes that import base functionality from other packages.
 \seealso{
 \code{\link{abr_baseclass}}, \code{\link{abr_ecoffinder-class}}
 }
+\concept{nls}

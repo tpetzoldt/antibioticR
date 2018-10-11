@@ -16,8 +16,8 @@ abr_cumdens(x, cutoff = 5.5, method = c("evmix", "density", "spline",
 
 abr_density.control(bw = 1, cut = 3,  n=512, bcmethod = "renorm", proper = TRUE)
 
-abr_cumdensquant(x, p = 0.5, cutoff = 5.5, method = c("density", "evmix",
-  "spline", "fmm"), control = abr_density.control())
+abr_cumdensquant(x, p = 0.5, cutoff = 5.5, method = c("density",
+  "evmix", "spline", "fmm"), control = abr_density.control())
 
 maxdens(x, cutoff = 5.5, from = min(x), to = max(x),
   method = c("density", "evmix"), control = abr_density.control())

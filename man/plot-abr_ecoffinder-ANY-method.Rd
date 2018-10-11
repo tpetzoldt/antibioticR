@@ -5,8 +5,8 @@
 \alias{plot,abr_ecoffinder,ANY-method}
 \title{Plot Fitted abrECOFFinder Object}
 \usage{
-\S4method{plot}{abr_ecoffinder,ANY}(x, cumulative = TRUE, fits = c("all",
-  "best"), ...)
+\S4method{plot}{abr_ecoffinder,ANY}(x, cumulative = TRUE,
+  fits = c("all", "best"), ...)
 }
 \arguments{
 \item{x}{an object fitted by \code{\link{ecoffinder_nls}}}

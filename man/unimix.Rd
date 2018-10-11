@@ -55,15 +55,6 @@ dunimix gives the density, punimix gives the distribution function,
 Density, distribution function, quantile function and random generation for
   univariate mixture distributions, composed of exponential, normal and gamma
   distributions.
-
-#' @rdname unimix
-#' @exportMethod qunimix
-#'
-setMethod("qunimix", c("numeric", "mxObj"),
-          function(x, obj, ...) {
-            qunimix(x, coef(obj), ...)
-          }
-)
 }
 \note{
 A quantile function \code{qunimix} is not yet implemented.

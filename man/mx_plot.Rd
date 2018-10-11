@@ -5,7 +5,7 @@
 \title{Plot Components of Mixture Distribution}
 \usage{
 mx_plot(obj, breaks, counts, disc = 0, ecoff.prob = 0.01,
-  main = "Subpopulations", ...)
+  main = "Subpopulations", length.out = 200, ...)
 }
 \arguments{
 \item{obj}{Object of class \code{\link{mxObj}}.}
@@ -19,6 +19,8 @@ mx_plot(obj, breaks, counts, disc = 0, ecoff.prob = 0.01,
 \item{ecoff.prob}{probability threshold for the ecoff}
 
 \item{main}{main title of the plot}
+
+\item{length.out}{number of points used for plotting component densities}
 
 \item{...}{other arguments passed to \code{\link{hist}}}
 }

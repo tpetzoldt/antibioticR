@@ -4,7 +4,8 @@
 \alias{ecoffinder_startpar}
 \title{Start Values for ECOFFinder}
 \usage{
-ecoffinder_startpar(x, y, method = c("peak1", "mode", "mean"), bw = "nrd0")
+ecoffinder_startpar(x, y, method = c("peak1", "mode", "mean"),
+  bw = "nrd0")
 }
 \arguments{
 \item{x}{x-values (log2 MIC or inhibition zone diameter)}

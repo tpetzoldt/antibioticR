@@ -15,27 +15,27 @@
 \title{Fit of Normal and Exponential-Normal Mixtures to Binned Data}
 \usage{
 fit_unimix(breaks, counts, parms, type = c("en", "enn", "ennn", "ennnn",
-  "ennnnn", "n", "nn", "nnn", "nnnn", "nnnnn"), ...)
+  "ennnnn", "n", "nn", "nnn", "nnnn", "nnnnn"), sd_min = 0, ...)
 
-fit_n(breaks, counts, parms, ...)
+fit_n(breaks, counts, parms, sd_min = 0, ...)
 
-fit_en(breaks, counts, parms, ...)
+fit_en(breaks, counts, parms, sd_min = 0, ...)
 
-fit_nn(breaks, counts, parms, ...)
+fit_nn(breaks, counts, parms, sd_min = 0, ...)
 
-fit_enn(breaks, counts, parms, ...)
+fit_enn(breaks, counts, parms, sd_min = 0, ...)
 
-fit_nnn(breaks, counts, parms, ...)
+fit_nnn(breaks, counts, parms, sd_min = 0, ...)
 
-fit_nnnn(breaks, counts, parms, ...)
+fit_nnnn(breaks, counts, parms, sd_min = 0, ...)
 
-fit_ennn(breaks, counts, parms, ...)
+fit_ennn(breaks, counts, parms, sd_min = 0, ...)
 
-fit_ennnn(breaks, counts, parms, ...)
+fit_ennnn(breaks, counts, parms, sd_min = 0, ...)
 
-fit_nnnnn(breaks, counts, parms, ...)
+fit_nnnnn(breaks, counts, parms, sd_min = 0, ...)
 
-fit_ennnnn(breaks, counts, parms, ...)
+fit_ennnnn(breaks, counts, parms, sd_min = 0, ...)
 }
 \arguments{
 \item{breaks}{upper class limits of the data}
@@ -45,6 +45,8 @@ fit_ennnnn(breaks, counts, parms, ...)
 \item{parms}{list of initial parameters for the mixture}
 
 \item{type}{of the mixture distribution, e.g. 'enn' for exponential-normal-normal}
+
+\item{sd_min}{lower boundary value for standard deviation and rate parameter}
 
 \item{...}{additional arguments passed to \code{mle2}}
 }

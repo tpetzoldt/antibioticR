@@ -3,9 +3,6 @@
 \docType{methods}
 \name{coerce}
 \alias{coerce}
-\alias{coerce}
-\alias{coerce}
-\alias{coerce}
 \alias{as.mxObj}
 \alias{as.mxObj,list-method}
 \alias{as.mxObj,vector-method}

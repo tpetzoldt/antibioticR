@@ -4,7 +4,7 @@
 \alias{mx_metafit}
 \title{Fit Mixture Distribution to Data and Evaluate Results}
 \usage{
-mx_metafit(breaks, counts, parms, save.data = TRUE, ...)
+mx_metafit(breaks, counts, parms, sd_min = 0, save.data = TRUE, ...)
 }
 \arguments{
 \item{breaks}{class boundaries of the data}
@@ -13,6 +13,8 @@ mx_metafit(breaks, counts, parms, save.data = TRUE, ...)
 
 \item{parms}{list of initial parameters for the mixture, or a suitable
 \code{\link{mxObj}}ect with start parameters}
+
+\item{sd_min}{lower boundary value for standard deviation and rate parameter}
 
 \item{save.data}{if data should be included in the returned object}
 
