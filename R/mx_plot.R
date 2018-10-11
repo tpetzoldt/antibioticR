@@ -5,6 +5,7 @@
 #' @param counts frequency of observations
 #' @param disc disc diameter (defaults to zero)
 #' @param ecoff.prob probability threshold for the ecoff
+#' @param length.out number of points used for plotting component densities
 #' @param main main title of the plot
 #' @param ... other arguments passed to \code{\link{hist}}
 #'
@@ -32,7 +33,7 @@
 #' @export
 #'
 mx_plot <- function(obj, breaks, counts, disc=0, ecoff.prob=0.01,
-                    main="Subpopulations", ...) {
+                    main="Subpopulations", length.out = 200,...) {
 
   ## old name: ## plot3mix
 
@@ -57,7 +58,7 @@ mx_plot <- function(obj, breaks, counts, disc=0, ecoff.prob=0.01,
   #if(is(obj, "mxObj")) obj <- coef(obj)
 
   ## !!! 0.1 = fixed start, 45 = fixed end
-  x1 <- seq(min(breaks), max(breaks), length.out=200)
+  x1 <- seq(min(breaks), max(breaks), length.out=length.out)
   xy <- dunimix(x1 - disc , obj, full.out=TRUE)
   xy[, 1] <- xy[,1] + disc
   colors <- c('#8dd3c7','#ffffb3','#bebada','#fb8072','#80b1d3','#fdb462','#b3de69')

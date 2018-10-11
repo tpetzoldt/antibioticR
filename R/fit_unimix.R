@@ -7,6 +7,7 @@
 #' @param counts frequency of observations
 #' @param parms list of initial parameters for the mixture
 #' @param type of the mixture distribution, e.g. 'enn' for exponential-normal-normal
+#' @param sd_min lower boundary value for standard deviation and rate parameter
 #' @param ... additional arguments passed to \code{mle2}
 #'
 #' @return
@@ -28,23 +29,23 @@
 #' @export
 #'
 fit_unimix <- function(breaks, counts, parms,
-  type=c("en", "enn", "ennn", "ennnn", "ennnnn", "n", "nn", "nnn", "nnnn", "nnnnn"), ...) {
+  type=c("en", "enn", "ennn", "ennnn", "ennnnn", "n", "nn", "nnn", "nnnn", "nnnnn"), sd_min=0, ...) {
 
   # todo:
   ## argument checking
   ## automatical creation of other types
   type <- paste0("fit_", match.arg(type))
 
-  do.call(type, list(breaks=breaks, counts=counts, parms=parms, ...))
+  do.call(type, list(breaks=breaks, counts=counts, parms=parms, sd_min=sd_min, ...))
 }
 
 
 #' @rdname fit_unimix
 #' @export
 #'
-fit_n <- function(breaks, counts, parms, ...) {
+fit_n <- function(breaks, counts, parms, sd_min=0, ...) {
   llunimix <- function(mean1, sd1) {
-    if (sd1 <= 0 ) {
+    if (sd1 <= sd_min ) {
       ## penalty for wrong parameters
       1e-9 * .Machine$double.xmax
     } else {
@@ -65,9 +66,9 @@ fit_n <- function(breaks, counts, parms, ...) {
 #' @rdname fit_unimix
 #' @export
 #'
-fit_en <- function(breaks, counts, parms, ...) {
+fit_en <- function(breaks, counts, parms, sd_min=0, ...) {
   llunimix <- function(L1, rate1, mean2, sd2) {
-    if ((L1 < 0) | (L1 > 1) | rate1 <= 0 | sd2 <=0) {
+    if ((L1 < 0) | (L1 > 1) | rate1 <= sd_min | sd2 <= sd_min) {
       ## penalty for wrong parameters
       1e-9 * .Machine$double.xmax
     } else {
@@ -87,9 +88,9 @@ fit_en <- function(breaks, counts, parms, ...) {
 #' @rdname fit_unimix
 #' @export
 #'
-fit_nn <- function(breaks, counts, parms, ...) {
+fit_nn <- function(breaks, counts, parms, sd_min=0, ...) {
   llunimix <- function(L1, mean1, sd1, mean2, sd2) {
-    if ((L1 < 0) | (L1 > 1) | sd1 <=0 | sd2 <=0) {
+    if ((L1 < 0) | (L1 > 1) | sd1 <= sd_min | sd2 <= sd_min) {
       ## penalty for wrong parameters
       1e-9 * .Machine$double.xmax
     } else {
@@ -111,10 +112,10 @@ fit_nn <- function(breaks, counts, parms, ...) {
 #' @rdname fit_unimix
 #' @export
 #'
-fit_enn <- function(breaks, counts, parms, ...) {
+fit_enn <- function(breaks, counts, parms, sd_min=0, ...) {
   llunimix <- function(L1, L2, rate1, mean2, sd2, mean3, sd3) {
-    if (L1 < 0 | L2 < 0 | abs(L1) + abs(L2) > 1 | rate1 <= 0
-        | rate1 <= 0 | sd2 <= 0 | sd3 <= 0) { # test: rate or sd <=0
+    if (L1 < 0 | L2 < 0 | abs(L1) + abs(L2) > 1 | rate1 <= sd_min
+        | rate1 <= sd_min | sd2 <= sd_min | sd3 <= sd_min) { # test: rate or sd <= sd_min
       ## penalty for wrong parameters
       1e-9 * .Machine$double.xmax
     } else {
@@ -136,10 +137,10 @@ fit_enn <- function(breaks, counts, parms, ...) {
 #' @rdname fit_unimix
 #' @export
 #'
-fit_nnn <- function(breaks, counts, parms, ...) {
+fit_nnn <- function(breaks, counts, parms, sd_min=0, ...) {
   llunimix <- function(L1, L2, mean1, sd1, mean2, sd2, mean3, sd3) {
     if (L1 < 0 | L2 < 0 | abs(L1) + abs(L2) > 1
-        | sd1 <=0 | sd2 <=0 | sd3 <=0) {
+        | sd1 <= sd_min | sd2 <= sd_min | sd3 <= sd_min) {
       ## penalty for wrong parameters
       1e-9 * .Machine$double.xmax
     } else {
@@ -161,10 +162,10 @@ fit_nnn <- function(breaks, counts, parms, ...) {
 #' @rdname fit_unimix
 #' @export
 #'
-fit_nnnn <- function(breaks, counts, parms, ...) {
+fit_nnnn <- function(breaks, counts, parms, sd_min=0, ...) {
   llunimix <- function(L1, L2, L3, mean1, sd1, mean2, sd2, mean3, sd3, mean4, sd4) {
     if (L1 < 0 | L2 < 0 | L3 < 0 | abs(L1) + abs(L2) +abs(L3) > 1
-        | sd1 <=0 | sd2 <=0 | sd3 <=0 | sd4 <= 0) {
+        | sd1 <= sd_min | sd2 <= sd_min | sd3 <= sd_min | sd4 <= sd_min) {
       ## penalty for wrong parameters
       1e-9 * .Machine$double.xmax
     } else {
@@ -188,10 +189,10 @@ fit_nnnn <- function(breaks, counts, parms, ...) {
 #' @rdname fit_unimix
 #' @export
 #'
-fit_ennn <- function(breaks, counts, parms, ...) {
+fit_ennn <- function(breaks, counts, parms, sd_min=0, ...) {
   llunimix <- function(L1, L2, L3, rate1, mean2, sd2, mean3, sd3, mean4, sd4) {
     if (L1 < 0 | L2 < 0 | L3 < 0 | abs(L1) + abs(L2) + abs(L3) > 1
-        | rate1 <= 0 | sd2 <= 0 | sd3 <= 0 | sd4 <= 0
+        | rate1 <= sd_min | sd2 <= sd_min | sd3 <= sd_min | sd4 <= sd_min
       ) {
       ## penalty for wrong parameters
       1e-9 * .Machine$double.xmax
@@ -215,10 +216,10 @@ fit_ennn <- function(breaks, counts, parms, ...) {
 #' @rdname fit_unimix
 #' @export
 #'
-fit_ennnn <- function(breaks, counts, parms, ...) {
+fit_ennnn <- function(breaks, counts, parms, sd_min=0, ...) {
   llunimix <- function(L1, L2, L3, L4, rate1, mean2, sd2, mean3, sd3, mean4, sd4, mean5, sd5) {
     if (L1 < 0 | L2 < 0 | L3 < 0 | L4 < 0 | abs(L1) + abs(L2) + abs(L3) + abs(L4) > 1
-        | rate1 <= 0 | sd2 <= 0 | sd3 <= 0 | sd4 <= 0 | sd5 <= 0) {
+        | rate1 <= sd_min | sd2 <= sd_min | sd3 <= sd_min | sd4 <= sd_min | sd5 <= sd_min) {
       ## penalty for wrong parameters
       1e-9 * .Machine$double.xmax
     } else {
@@ -242,10 +243,10 @@ fit_ennnn <- function(breaks, counts, parms, ...) {
 #' @rdname fit_unimix
 #' @export
 #'
-fit_nnnnn <- function(breaks, counts, parms, ...) {
+fit_nnnnn <- function(breaks, counts, parms, sd_min=0, ...) {
   llunimix <- function(L1, L2, L3, L4, mean1, sd1, mean2, sd2, mean3, sd3, mean4, sd4, mean5, sd5) {
     if (L1 < 0 | L2 < 0 | L3 < 0 | L4 < 0 | abs(L1) + abs(L2) + abs(L3) + abs(L4) > 1
-        | sd1 <= 0 | sd2 <= 0 | sd3 <= 0 | sd4 <= 0 | sd5 <= 0) {
+        | sd1 <= sd_min | sd2 <= sd_min | sd3 <= sd_min | sd4 <= sd_min | sd5 <= sd_min) {
       ## penalty for wrong parameters
       1e-9 * .Machine$double.xmax
     } else {
@@ -269,10 +270,10 @@ fit_nnnnn <- function(breaks, counts, parms, ...) {
 #' @rdname fit_unimix
 #' @export
 #'
-fit_ennnnn <- function(breaks, counts, parms, ...) {
+fit_ennnnn <- function(breaks, counts, parms, sd_min=0, ...) {
   llunimix <- function(L1, L2, L3, L4, L5, rate1, mean2, sd2, mean3, sd3, mean4, sd4, mean5, sd5, mean6, sd6) {
     if (L1 < 0 | L2 < 0 | L3 < 0 | L4 < 0 | L5 < 0| abs(L1) + abs(L2) + abs(L3) + abs(L4) + abs(L5) > 1
-        | rate1 <= 0 | sd2 <= 0 | sd3 <= 0 | sd4 <= 0 | sd5 <= 0 | sd6 <=0 ) {
+        | rate1 <= sd_min | sd2 <= sd_min | sd3 <= sd_min | sd4 <= sd_min | sd5 <= sd_min | sd6 <= sd_min ) {
       ## penalty for wrong parameters
       1e-9 * .Machine$double.xmax
     } else {

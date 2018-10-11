@@ -5,6 +5,7 @@
 #' @param save.data if data should be included in the returned object
 #' @param parms list of initial parameters for the mixture, or a suitable
 #'   \code{\link{mxObj}}ect with start parameters
+#' @param sd_min lower boundary value for standard deviation and rate parameter
 #' @param ... additional arguments passed to \code{\link{mle2}} and \code{\link{optim}}
 #'
 ## #' @return
@@ -63,7 +64,7 @@
 #'
 #' cov2cor(vcov(ret)) # correlation matrix
 #'
-mx_metafit <- function(breaks, counts, parms, save.data=TRUE, ...) {
+mx_metafit <- function(breaks, counts, parms, sd_min=0, save.data=TRUE, ...) {
 
   validpar <- function(p) {
     nm <- names(p)[!is.na(p)]
@@ -93,9 +94,9 @@ mx_metafit <- function(breaks, counts, parms, save.data=TRUE, ...) {
                       #sd1   = weighted.sd(mids, counts)
                       sd1    = sqrt(cov.wt(data.frame(mids), counts)$cov[1])
                       )
-      fit <- fit_n(breaks, counts, parms=vpstart)
+      fit <- fit_n(breaks, counts, parms=vpstart, sd_min=sd_min)
     } else {
-      fit <-fit_unimix(breaks, counts, vpstart, type, ...)
+      fit <-fit_unimix(breaks, counts, vpstart, type, sd_min=sd_min, ...)
     }
   )
 
