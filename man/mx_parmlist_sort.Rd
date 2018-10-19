@@ -5,6 +5,8 @@
 \alias{mx_parmlist_select}
 \alias{mx_intermediate}
 \alias{mx_wildtype}
+\alias{mx_select}
+\alias{mx_subset}
 \title{Sort and Select Distribution Components}
 \usage{
 mx_parmlist_sort(p)
@@ -15,9 +17,15 @@ mx_parmlist_select(p, N = 1, item = c("L", "mean", "sd"),
 mx_intermediate(p, as.vector = TRUE)
 
 mx_wildtype(p, as.vector = TRUE)
+
+mx_select(obj, type = c("resistant", "wildtype", "intermediate",
+  "hypersensitive", "nonresistant"))
+
+mx_subset(p, type = c("resistant", "wildtype", "intermediate",
+  "hypersensitive", "nonresistant"), as.vector = TRUE)
 }
 \arguments{
-\item{p}{mixture distribution parameter list}
+\item{p}{mixture distribution object or parameter list}
 
 \item{N}{number of components}
 
@@ -26,6 +34,8 @@ mx_wildtype(p, as.vector = TRUE)
 \item{ascending}{ascending  (TRUE) ode descending (FALSE) order}
 
 \item{as.vector}{if TRUE, result is returned as a vector, otherwise as list}
+
+\item{type}{kind of subset}
 
 \item{...}{reserved for future extensions}
 }
