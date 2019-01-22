@@ -35,10 +35,10 @@ from time to time. The most recent copy can be downloaded from https://github.co
 Introduction
 ============
 
-During the 20th century, antimicrobial agents like antibiotics (that are active agains bacteria), 
+During the 20th century, antimicrobial agents like antibiotics (that are active against bacteria), 
 antivirals, antifungals and other substances that are active against parasites (e.g. against malaria) [@amr2016]
 have made modern medicine possible. Hover, the dramatic increase of resistant and multiresistant bacterial pathogens
-is now been widely recognized as a global challenge for human health [@Roca2015,@amr2016,@ECDC2017].
+is now been widely recognized as a global challenge for human health [@Roca2015;@amr2016;@ECDC2017].
 
 As there is currently still lack in understanding how environmental factors influence evolution and transmission of antibiotic resistances, "global efforts are required to characterize and quantify antibiotic resistance in the environment" [@Berendonk2015].
 
@@ -112,7 +112,7 @@ Firstly we load and inspect the test data set, included in the package:
 ```{r}
 ## raw data contain NA values
 data(micdata)
-head(micdata)
+na.omit(micdata)
 plot(freq ~ log2(conc), data=micdata, type="h")
 ```
 
@@ -192,7 +192,7 @@ The results can then be plotted with function `mx_plot`. The optional `disc`
 argument adds the diameter of the antibiotic disc.
 
 ```{r}
-mx_plot(obj2, disc=5.5, main="Univariate Mixture Distribution-Approach", xlab="ZD (mm)")
+mx_plot(obj2, disc=5.5, main="", xlab="ZD (mm)")
 ```
 
 Numerical results can be obtained with:
