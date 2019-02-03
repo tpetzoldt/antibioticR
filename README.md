@@ -52,5 +52,9 @@ Documentation
 
 The documentation is still to be written. An initial version is found here:
 
-https://rawgit.com/tpetzoldt/antibioticR/master/vignettes/Introduction.html
+https://tpetzoldt.github.io/antibioticR/doc/Introduction.html
 
+Original author
+---------------
+
+[tpetzoldt](https://github.com/tpetzoldt)
