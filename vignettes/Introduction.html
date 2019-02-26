@@ -12,7 +12,7 @@
 
 <meta name="author" content="Thomas Petzoldt" />
 
-<meta name="date" content="2019-01-22" />
+<meta name="date" content="2019-02-26" />
 
 <title>Analysis of Antibiotic Resistance Tests with Package antibioticR</title>
 
@@ -92,7 +92,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <h1 class="title toc-ignore">Analysis of Antibiotic Resistance Tests with Package <code>antibioticR</code></h1>
 <h4 class="author"><em>Thomas Petzoldt</em></h4>
-<h4 class="date"><em>2019-01-22</em></h4>
+<h4 class="date"><em>2019-02-26</em></h4>
 
 
 
@@ -110,12 +110,12 @@ LANG=en_US.UTF-8
 <p><strong>Please note:</strong> This document reflects work in progress and will be updated from time to time. The most recent copy can be downloaded from <a href="https://github.com/tpetzoldt/" class="uri">https://github.com/tpetzoldt/</a></p>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
-<p>During the 20th century, antimicrobial agents like antibiotics (that are active against bacteria), antivirals, antifungals and other substances that are active against parasites (e.g. against malaria) <span class="citation">(Antimicrobial Resistance 2016)</span> have made modern medicine possible. Hover, the dramatic increase of resistant and multiresistant bacterial pathogens is now been widely recognized as a global challenge for human health <span class="citation">(Roca et al. 2015; Antimicrobial Resistance 2016; ECDC 2017)</span>.</p>
+<p>During the 20th century, antimicrobial agents like antibiotics (that are active against bacteria), antivirals, antifungals and other substances that are active against parasites (e.g. against malaria) have made modern medicine possible <span class="citation">(Antimicrobial Resistance 2016)</span>. However, the dramatic increase of resistant and multiresistant bacterial pathogens is now been widely recognized as a global challenge for human health <span class="citation">(Roca et al. 2015; Antimicrobial Resistance 2016; ECDC 2017)</span>.</p>
 <p>As there is currently still lack in understanding how environmental factors influence evolution and transmission of antibiotic resistances, “global efforts are required to characterize and quantify antibiotic resistance in the environment” <span class="citation">(Berendonk et al. 2015)</span>.</p>
-<p>This package aims to improve the accesibility to statistical methods for analysing populations of resistant and non-resistant bacteria from an environmental, i.e. non-clinical perspective. The methods are intended to describe sensitivity, tolerance and resistance on a sub-acute level in order to compare populations of different origin on gradual scales.</p>
+<p>This package aims to improve accesibility to statistical methods for analysing populations of resistant and non-resistant bacteria from an environmental, i.e. non-clinical perspective. The methods are intended to describe sensitivity, tolerance and resistance on a sub-acute level in order to compare populations of different origin on gradual scales.</p>
 <p>We assume that environmental populations are composed of different geno- and phenotypes, so that quantitative data from standard methods like disc diffusion zone diameters (ZD) or minimum inhibitory concentration (MIC) values will yield multi-modal univariate mixture distributions when tested against single antibiotics.</p>
 <p>The package relies on existing packages, especially packages <strong>evmix</strong> <span class="citation">(Hu and Scarrott 2018)</span> for boundary corrected density estimation and package <strong>bbmle</strong> <span class="citation">(Bolker and R Development Core Team 2017)</span> for maximum likelihood estimation. The package will be amended by visualization tools and interactive web-applications using R’s base graphics and statistics packages [RCore2015], packages <strong>ggplot2</strong> <span class="citation">(Wickham 2016)</span> and <strong>shiny</strong> <span class="citation">(Chang et al. 2018)</span>.</p>
-<p><strong>Please note:</strong> The package and this document are in an early stage of development (pre-alpha). It comes without warranty and is <strong>not intended for clinical applications</strong>. Its functions and classes are likely to change and may contain mistakes and errors. Source code of the development version is available from <a href="https://github.com/tpetzoldt/antibioticR" class="uri">https://github.com/tpetzoldt/antibioticR</a>. Comments are welcome.</p>
+<p><strong>Please note:</strong> The package and this document are in an early stage of development (alpha). It comes without warranty and is <strong>not intended for clinical applications</strong>. Its functions and classes are likely to change and may contain mistakes and errors. Source code of the development version is available from <a href="https://github.com/tpetzoldt/antibioticR" class="uri">https://github.com/tpetzoldt/antibioticR</a>. Comments are welcome.</p>
 </div>
 <div id="methods" class="section level1">
 <h1>Methods</h1>
