@@ -69,7 +69,7 @@ Data set
 The data set for demonstrating main features of the package was
 provided by ... It contains ...
 
-** the pre-alpha version contains only articficial test data** 
+** the alpha version contains articficial test data** 
 
 
 ```{r eval=TRUE, echo=FALSE, results="hide"}
@@ -93,6 +93,54 @@ The wild type population is defined as "an isolate that it is
 devoid of phenotypically detectable acquired resistance mechanisms to a 
 specified antimicrobial agent." [@Kahlmeter2018]
 
+Kernel density smoothing
+------------------------
+
+Lets assume a multi-modal distribution of zone diameters (zd in mm), here an 
+example for *Escherichia coli* exopsed to the antibiotic Piperacillin in an 
+inhibtion test (data from http://www.eucast.org). The data are binned with a 
+class frequency of 1mm and censored by a minimum value of 6mm, the diameter of 
+the antibiotic test disc.
+
+As **R**'s  `density`-function requires the raw data, we expand the binned vector 
+with a helper function `unbin`:
+
+```{r}
+freq    <- c(36, 0, 2, 3, 4, 8, 9,  14,  10, 9, 3, 1, 1, 2, 
+             4, 8,  20,  45,  40,  54 , 41,  22, 8, 3, 3, 0, 0)
+classes <- 5 + (1:length(freq))
+zd      <- unbin(classes, freq)
+```
+
+We shift the distribution by 0.5 to the class centers and use standard density smoothing with the default Gaussian kernel. 
+It shows already good results for the rightmost (wild-type) and the intermediate component (sub-population). However, it is obviously not valid for the censored left component:
+
+```{r}
+
+hist(zd, breaks =seq(0, max(zd))+0.5, xlab="ZD (mm)", main="antibiotic", probability=TRUE)
+lines(density(zd, bw=1, from=0, to=max(zd)))
+abline(v=6, col="red", lty="dashed")
+lines(abr_density(zd, cutoff = 5.5, method = c("density"),
+                  control = abr_density.control()), col="lightblue", lwd=3)
+```
+
+Function `abr_density` with option "density" is just a wrapper around this. It 
+clips values below the interval, but does not correct its shape.
+
+This can be improved with boundary corrected density estimation from package 
+**evmix** [@Hu2018]:
+
+```{r}
+hist(zd, breaks =seq(0, max(zd))+0.5, xlab="ZD (mm)", main="antibiotic", probability=TRUE)
+lines(abr_density(zd, cutoff = 5.5, method = c("evmix"),
+            control = abr_density.control()), col="lightblue", lwd=3)
+
+```
+
+Here, `bckden` from package **evmix** is called with a lower boundary `cutoff=5.5`mm, 
+so that the antibiotic disc size of 6 mm becomes the class midpoint. 
+The arguments of `dbckden` can be adapted with the `control` parameter.
+
 ECOFFinder
 ----------
 
@@ -100,8 +148,9 @@ ECOFFinder is an algorithm developed by @Turnidge2006. Wild-type cut-off values
 for MIC data are estimated from quantiles of a normal distribution of $\log_2$ 
 transformed MIC values. Mean and standard deviation of this distribution are
 estimated by non-linear regression between a normal probability distribution 
-(that is scaled in y-direction) and cumulative frequencies of observation data. In order to 
-separate the wild-type normal distribution from other components, e.g. the 
+(that is scaled in y-direction) and cumulative frequencies of observation data. 
+
+In order to separate the wild-type normal distribution from other components, e.g. the 
 resistant sub-population, the regression is repeated using successive subsets of 
 data, until an optimal fit between the subset and the normal probability 
 function is found.
