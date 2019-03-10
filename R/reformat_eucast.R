@@ -30,9 +30,9 @@ reformat_eucast <- function(data, type=c("ZD", "MIC"), melt=TRUE, unbin=FALSE) {
   ## todo: check data argument: table format and column names
 
   if (melt){
-    melted_euc <- melt(data, id="Antibiotic")
+    melted_euc <- melt(data, id="Antibiotic", value.name = "Isolates")
     zd <- melted_euc[grep("X.*", as.character(melted_euc$variable)),]
-    zd$diameter <- as.numeric(sub("X", "", zd$variable))
+    zd$Diameter <- as.numeric(sub("X", "", zd$variable))
     zd$variable <- NULL
   } else {
     zd <- data
@@ -40,12 +40,12 @@ reformat_eucast <- function(data, type=c("ZD", "MIC"), melt=TRUE, unbin=FALSE) {
   if (unbin) {
   zdx <- unbin(zd, zd$value)
   data.frame(
-    isolate = "-",
-    origin = "Eucast",
-    antibiotic = zdx$Antibiotic,
-    diameter = zdx$diameter
+    #Isolate = "-",
+    #Origin = "Eucast",
+    Antibiotic = zdx$Antibiotic,
+    Diameter = zdx$Diameter
   )
   } else {
-    zd
+    zd[c("Antibiotic", "Diameter", "Isolates")]
   }
 }
