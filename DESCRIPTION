@@ -17,7 +17,8 @@ Imports: bbmle, evmix
 Suggests: knitr, dplyr, ggplot2, shiny, rhandsontable
 VignetteBuilder: knitr
 Collate: 
-    'ECOFFinder.R'
+    'antibioticR-package.R'
+	'ECOFFinder.R'
     'aaa_oldclasses.R'
     'abr_baseclass.R'
     'abr_densfunctions.R'
@@ -25,7 +26,6 @@ Collate:
     'abr_quantile.R'
     'abr_summary.R'
     'antibioticR-internal.R'
-    'antibioticR-package.R'
     'ecoffinder-internal-plot-decoff.R'
     'ecoffinder-internal-plot-pecoff.R'
     'ecoffinder-plot-methods.R'
@@ -46,6 +46,7 @@ Collate:
     'mx_results.R'
     'parmList.R'
     'peakwindow.R'
+	'reformat_eucast.R'
     'turnpoints.R'
     'unbin.R'
     'unimix-distributions-internal.R'
