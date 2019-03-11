@@ -2,7 +2,7 @@ Package: antibioticR
 Type: Package
 Title: Analysis of Antibiotic Resistance Data
 Version: 0.3.1
-Date: 2018-07-30
+Date: 2019-03-08
 Author: Thomas Petzoldt
 Encoding: UTF-8
 Maintainer: Thomas Petzoldt <thomas.petzoldt@tu-dresden.de>
