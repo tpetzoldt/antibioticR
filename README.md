@@ -26,11 +26,6 @@ The package supports currently three methods:
 Download and Installation
 -------------------------
 
-### Release version
-
-The package is not yet released.
-
-
 ### Development version
 
 Install with package devtools:
@@ -39,6 +34,10 @@ Install with package devtools:
     library(devtools)
     install_github("tpetzoldt/antibioticR")
 	
+### Release version
+
+The package is not yet released.
+
 	
 Demo
 ----

@@ -38,7 +38,7 @@ reformat_eucast <- function(data, type=c("ZD", "MIC"), melt=TRUE, unbin=FALSE) {
     zd <- data
   }
   if (unbin) {
-  zdx <- unbin(zd, zd$value)
+  zdx <- unbin(zd, zd$Isolates)
   data.frame(
     #Isolate = "-",
     #Origin = "Eucast",
