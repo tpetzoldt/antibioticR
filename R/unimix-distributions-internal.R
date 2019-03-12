@@ -23,6 +23,7 @@
 
   ## compose mixture
   yy <- sapply(parms, fun)
+  #ret <- ifelse(is.vector(yy), sum(yy), rowSums(yy))
   ret <- rowSums(yy)
 
   ## return density only or a matrix with all components
@@ -53,6 +54,7 @@
 
   ## compose mixture
   yy <- sapply(parms, fun)
+  #ret <- ifelse(is.vector(yy), sum(yy), rowSums(yy))
   ret <- rowSums(yy)
 
   ## return p only, or p of all components

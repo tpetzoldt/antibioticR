@@ -34,7 +34,7 @@ runimix(n, obj, ...)
 \arguments{
 \item{x}{vector of quantiles}
 
-\item{obj}{obkect of class \code{mxObj} with mixture distributin parameters}
+\item{obj}{obkect of class \code{mxObj} with mixture distribution parameters}
 
 \item{full.out}{return total density only or a matrix with all components}
 
@@ -58,6 +58,7 @@ Density, distribution function, quantile function and random generation for
 }
 \note{
 A quantile function \code{qunimix} is not yet implemented.
+  Automatic coercion of arguments may still have bugs.
 }
 \examples{
 

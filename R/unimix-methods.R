@@ -6,7 +6,7 @@
 #'
 #' @param x vector of quantiles
 #' @param q vector of quantiles
-#' @param obj obkect of class \code{mxObj} with mixture distributin parameters
+#' @param obj obkect of class \code{mxObj} with mixture distribution parameters
 #' @param n number of random values
 #' @param full.out return total density only or a matrix with all components
 #' @param ... reserved for future extensions
@@ -19,6 +19,7 @@
 #'
 #'
 #' @note A quantile function \code{qunimix} is not yet implemented.
+#'   Automatic coercion of arguments may still have bugs.
 #'
 #'
 #' @examples
