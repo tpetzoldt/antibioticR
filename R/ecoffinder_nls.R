@@ -26,6 +26,10 @@
 #'   epidemiological cut-off values. Clin Microbial Infect 12: 418-425
 #'   \doi{10.1111/j.1469-0691.2006.01377.x}
 #'
+#' @seealso
+#'   \code{\link{ecoffinder_startpar}} for heuristic method to gues start parameters\cr
+#'   \code{\link{ECOFFinder}} for an interactice shiny app
+#'
 #' @examples
 #'
 #' ## raw data contain NA values
@@ -60,10 +64,9 @@ ecoffinder_nls <- function(conc, count, startpar="mode", concentrations=NA, log2
 
   empty <- is.na(count)
   count[empty] <- 0
+
   ## create local data frame
   data <- data.frame(conc=conc, count=count, cumCount = cumsum(count), notempty = !empty)
-
-
 
   if (startpar[1] %in% c("mode", "mean")) {
     pstart <- ecoffinder_startpar(conc, count) # todo: bandwidth !!!

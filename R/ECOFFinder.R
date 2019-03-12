@@ -8,6 +8,9 @@
 #'
 #' @return This function has no return value.
 #'
+#' @seealso \code{\link{ecoffinder_nls}} for a command line version of
+#'   this function.
+#'
 #' @examples
 #'
 #' \dontrun{

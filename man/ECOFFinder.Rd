@@ -25,3 +25,7 @@ ECOFFinder()
 }
 
 }
+\seealso{
+\code{\link{ecoffinder_nls}} for a command line version of
+  this function.
+}

@@ -65,3 +65,7 @@ Turnidge, J., Kahlmeter, G., Kronvall, G. (2006) Statistical characterization of
   epidemiological cut-off values. Clin Microbial Infect 12: 418-425
   \doi{10.1111/j.1469-0691.2006.01377.x}
 }
+\seealso{
+\code{\link{ecoffinder_startpar}} for heuristic method to gues start parameters\cr
+  \code{\link{ECOFFinder}} for an interactice shiny app
+}
