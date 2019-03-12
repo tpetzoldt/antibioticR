@@ -23,10 +23,13 @@
 
   ## compose mixture
   yy <- sapply(parms, fun)
-  #ret <- ifelse(is.vector(yy), sum(yy), rowSums(yy))
-  ret <- rowSums(yy)
+  if (is.matrix(yy)) {
+    ret <- rowSums(yy)
+  } else {
+    ret <- sum(yy)
+  }
 
-  ## return density only or a matrix with all components
+    ## return density only or a matrix with all components
   if (full.out) {
     ret <- cbind(x=x, yy, y=ret)
   }
@@ -54,8 +57,11 @@
 
   ## compose mixture
   yy <- sapply(parms, fun)
-  #ret <- ifelse(is.vector(yy), sum(yy), rowSums(yy))
-  ret <- rowSums(yy)
+  if (is.matrix(yy)) {
+    ret <- rowSums(yy)
+  } else {
+    ret <- sum(yy)
+  }
 
   ## return p only, or p of all components
   if (full.out) {
@@ -64,15 +70,15 @@
   return(ret)
 }
 
-.runimix <- function(n, parms) {
+.runimix <- function(n, parms, full.out=FALSE) {
   fun <- function(pp) {
     with(pp, {
       if (type=="n") {
-        rnorm(n * L, mean=mean, sd=sd)
+        L * rnorm(n, mean=mean, sd=sd)
       } else if (type=="g") {
-        L * rgamma(n * L, shape=shape, rate=rate)
+        L * rgamma(n, shape=shape, rate=rate)
       } else if (type=="e") {
-        L * rexp(n * L, rate=rate)
+        L * rexp(n, rate=rate)
       } else {
         stop("distribution type not available")
       }
@@ -82,12 +88,18 @@
   LL <- sapply(parms, function(x) x$L)
   LL <- LL/sum(LL)
   for (i in 1:length(LL)) parms[[i]]$L <- unname(LL[i])
-  #print(parms)
 
   ## compose mixture
   yy <- sapply(parms, fun)
-  ret <- as.vector(unlist(yy))
-  #ret <- sample(as.vector(unlist(yy)), n)
+  if (is.matrix(yy)) {
+    ret <- rowSums(yy)
+  } else {
+    ret <- sum(yy)
+  }
 
+  ## return density only or a matrix with all components
+  if (full.out) {
+    ret <- cbind(x=x, yy, y=ret)
+  }
   return(ret)
 }
