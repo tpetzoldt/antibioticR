@@ -6,7 +6,18 @@
 \alias{antibioticR}
 \title{Analysis of Antbiotic Resistance Data}
 \description{
-A collection of methods ...
+The package aims to improve accesibility to statistical methods for
+analysing populations of resistant and non-resistant bacteria from an
+environmental, i.e. non-clinical perspective. The methods are intended to
+describe sensitivity, tolerance and resistance on a sub-acute level in order
+to compare populations of different origin on gradual scales.
+}
+\details{
+The package supports currently three methods:
+(1) Kernel density smoothing for getting mean values and multiple modes from the distributions,
+(2) an implementation of the ECOFFinder algoritthm (Turnidge, 2006) with automatic start value
+   estimation and a shiny app for interactive use, and
+(3) Maximum likelihood estimation of multi-modal normal and exponential-normal mixtures.
 }
 \references{
 Bolker, Ben and R Development Core Team (2017) bbmle:
