@@ -22,8 +22,6 @@
 #'    \url{https://CRAN.R-project.org/package=bbmle}
 #'
 #'
-#' @examples
-#'
 
 #' @rdname fit_unimix
 #' @export

@@ -28,7 +28,6 @@
 #' @param p vector of probability quantiles
 #' @param from,to search range for maximum (= mode) search
 #'
-#' @details describe options ...
 #'
 #' @return data frame with
 #'   \itemize{
@@ -39,9 +38,70 @@
 #' @seealso \code{\link{density}}, \code{\link{dbckden}}
 #'
 #' @rdname abr_densfunctions
+#'
 #' @export
 #'
 #' @examples
+#'
+#' opar <- par(no.readonly = TRUE)
+#' ## ===== minimum inhibitory concentrations (MIC) data =====
+#' data("micdata")
+#' micdata$freq <- with(micdata, ifelse(is.na(freq), 0, freq))
+#'
+#' par(las = 2, mar=c(9,4,4,2)+.1)
+#'
+#' ##' relative frequencies
+#' y <- micdata$freq / sum(micdata$freq)
+#' x <- log2(micdata$conc)
+#'
+#' plot(y ~ x, type = "h", axes = FALSE, xlab="", ylab="rel. frequency")
+#' axis(2)
+#' axis(1)
+#' axis(1, line=3, at = log2(micdata$conc), label = round(micdata$conc, 4))
+#' mtext("log2(conc)", side=1, line=1.5, las=1)
+#' mtext("conc", side=1, line=6, las=1)
+#'
+#' ##' standard R function with weights
+#' dens <- density(x, weights=y, bw=2/3)
+#' lines(dens)
+#'
+#' ## ===== zone diameter (ZD) data =====
+#' freq <- c(36, 0, 2, 3, 4, 8, 9, 14, 10, 9, 3, 1, 8, 2, 4, 8, 20,
+#'           45, 40, 54, 41, 22, 8, 3, 3, 0, 0, 0, 0, 2)
+#'
+#' relfreq <- freq/sum(freq)
+#' bins <- 5 +(1:length(freq))
+#' mids <- bins + 0.5
+#'
+#' plot(mids, relfreq, type="h")
+#'
+#' ## ----- standard R function -----
+#' edf <- density(mids, weights=relfreq, bw=2/3, from=0, to=40)
+#' lines(edf)
+#'
+#' ## ----- same, but with different interface -----
+#' edf2 <- abr_density(unbin(mids, freq), control=list(bw=2/3))
+#' lines(edf2, col="red", lty="dotted")
+#'
+#' ## ----- boundary corrected density from package evmix -----
+#' bcd <- abr_density(unbin(mids, freq), method="evmix")
+#' lines(bcd, col="blue", lty="dotted")
+#'
+#' ## ===== maximum of density function (uses optimizer) =====
+#' maxdens(unbin(mids, freq))
+#'
+#' ## ----- cumulative density -----
+#' plot(abr_cumdens(unbin(mids, freq), method="fmm"), type="l")
+#'
+#' ## ----- quantiles -----
+#' prob <- c(0.5, 0.95, 0.99)
+#' abline(h=prob, lty="dotted")
+#' abline(v=abr_cumdensquant(unbin(mids, freq),
+#'                           p=prob, method="fmm"), lty="dotted")
+#'
+#' par(opar)
+#'
+#'
 #'
 abr_density <- function(x, cutoff=5.5, method = c("density", "evmix"),
                         control=abr_density.control()) {
@@ -96,7 +156,7 @@ abr_cumdens <- function(x, cutoff=5.5, method = c("evmix", "density", "spline", 
     ret <- data.frame(spline(x, y/max(y), n=ctrl$n))
 
   } else if (method == "fmm") {
-    ## better: use of monotone spline
+    ## use of monotone spline
     Fn <- ecdf(x)
     Spl <- splinefun(x, Fn(x), method="fmm")
     xnew <- seq(min(x), max(x), length.out=ctrl$n)
@@ -211,4 +271,6 @@ maxdens <- function(x, cutoff=5.5, from=min(x), to=max(x),
   list(x=mx, y=my)
 }
 
-# todo: example plot_dens
+# todo:
+# - examples
+# - from, to arguments where still missing

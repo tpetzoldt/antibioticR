@@ -8,7 +8,6 @@
 #'
 #' @export
 #'
-#' @examples
 #'
 mixParmDf2parmlist <- function(df) {
 

@@ -57,9 +57,6 @@ fit_ennnnn(breaks, counts, parms, sd_min = 0, ...)
 Fit mixture distributions to binned data with a maximum likelihood method,
   inspired by Venables and Ripley (2002)
 }
-\examples{
-
-}
 \references{
 Venables, W. N. and Ripley, B. D. (2002) Modern Applied Statistics with S.
    Fourth Edition. Springer, New York. ISBN 0-387-95457-0

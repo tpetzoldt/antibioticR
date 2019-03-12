@@ -2,6 +2,7 @@
 #' Sort and Select Distribution Components
 #'
 #' @param p mixture distribution object or parameter list
+#' @param obj mixture distribution object
 #' @param N number of components
 #' @param item parameter name used for sorting and selection (e.g. 'L', 'mean', 'sd')
 #' @param type kind of subset
@@ -10,8 +11,6 @@
 #' @param ... reserved for future extensions
 #'
 #' @return
-#'
-#' @examples
 #'
 #' @rdname mx_parmlist_sort
 #'

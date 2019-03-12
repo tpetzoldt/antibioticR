@@ -69,7 +69,7 @@ setMethod("punimix", c("numeric", "list"),
 #' @exportMethod punimix
 setMethod("punimix", c("numeric", "mxObj"),
           function(q, obj, ...) {
-            .dunimix(q, coef(obj), ...)
+            .punimix(q, coef(obj), ...)
           }
 )
 
@@ -91,6 +91,7 @@ setMethod("punimix", c("numeric", "mxObj"),
 #' @exportMethod runimix
 setMethod("runimix", c("numeric", "list"),
           function(n, obj, ...) {
+            warning("function runimix may be broken")
             .runimix(n, obj, ...)
           }
 )
@@ -99,6 +100,7 @@ setMethod("runimix", c("numeric", "list"),
 #' @exportMethod runimix
 setMethod("runimix", c("numeric", "mxObj"),
           function(n, obj, ...) {
+            warning("function runimix may be broken")
             .runimix(n, coef(obj), ...)
           }
 )

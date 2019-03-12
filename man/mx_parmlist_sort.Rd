@@ -35,6 +35,8 @@ mx_subset(p, type = c("resistant", "wildtype", "intermediate",
 
 \item{as.vector}{if TRUE, result is returned as a vector, otherwise as list}
 
+\item{obj}{mixture distribution object}
+
 \item{type}{kind of subset}
 
 \item{...}{reserved for future extensions}
@@ -44,7 +46,4 @@ mx_subset(p, type = c("resistant", "wildtype", "intermediate",
 }
 \description{
 Sort and Select Distribution Components
-}
-\examples{
-
 }

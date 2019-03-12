@@ -18,6 +18,3 @@ Convert Parameters in data frame format to a paremeter list ...
 \details{
 deprecated !!!
 }
-\examples{
-
-}
