@@ -99,7 +99,7 @@
 
   ## return density only or a matrix with all components
   if (full.out) {
-    ret <- cbind(x=x, yy, y=ret)
+    ret <- cbind(yy, y=ret)
   }
   return(ret)
 }
