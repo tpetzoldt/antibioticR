@@ -97,13 +97,11 @@ Kernel density smoothing
 ------------------------
 
 Lets assume a multi-modal distribution of zone diameters (zd in mm), here an 
-example for *Escherichia coli* exopsed to the antibiotic Piperacillin in an 
+example for *Escherichia coli* exposed to the antibiotic Piperacillin in an 
 inhibtion test (data from http://www.eucast.org). The data are binned with a 
-class frequency of 1mm and censored by a minimum value of 6mm, the diameter of 
-the antibiotic test disc.
+class frequency of 1mm and censored by a minimum value of 6mm, the diameter of the antibiotic test disc.
 
-As **R**'s  `density`-function requires the raw data, we expand the binned vector 
-with a helper function `unbin`:
+As not all density functions support weighted data (**R**'s  `density`-function does, but the functions from *evmix* do not), we expand the binned vector to *raw data* with a helper function `unbin`:
 
 ```{r}
 freq    <- c(36, 0, 2, 3, 4, 8, 9,  14,  10, 9, 3, 1, 1, 2, 
@@ -124,8 +122,7 @@ lines(abr_density(zd, cutoff = 5.5, method = c("density"),
                   control = abr_density.control()), col="lightblue", lwd=3)
 ```
 
-Function `abr_density` with option "density" is just a wrapper around this. It 
-clips values below the interval, but does not correct its shape.
+Function `abr_density` with option "density" is just a wrapper around this. It clips values below the interval, but does not correct its shape.
 
 This can be improved with boundary corrected density estimation from package 
 **evmix** [@Hu2018]:
@@ -137,23 +134,14 @@ lines(abr_density(zd, cutoff = 5.5, method = c("evmix"),
 
 ```
 
-Here, `bckden` from package **evmix** is called with a lower boundary `cutoff=5.5`mm, 
-so that the antibiotic disc size of 6 mm becomes the class midpoint. 
-The arguments of `dbckden` can be adapted with the `control` parameter.
+Here, `bckden` from package **evmix** is called with a lower boundary `cutoff=5.5`mm,  so that the antibiotic disc size of 6 mm becomes the class midpoint. The arguments of `dbckden` can be adapted with the `control` parameter.
 
 ECOFFinder
 ----------
 
-ECOFFinder is an algorithm developed by @Turnidge2006. Wild-type cut-off values 
-for MIC data are estimated from quantiles of a normal distribution of $\log_2$ 
-transformed MIC values. Mean and standard deviation of this distribution are
-estimated by non-linear regression between a normal probability distribution 
-(that is scaled in y-direction) and cumulative frequencies of observation data. 
+ECOFFinder is an algorithm developed by @Turnidge2006. Wild-type cut-off values for MIC data are estimated from quantiles of a normal distribution of $\log_2$ transformed MIC values. Mean and standard deviation of this distribution are estimated by non-linear regression between a normal probability distribution (that is scaled in y-direction by a parameter $K$) and cumulative frequencies of observation data. 
 
-In order to separate the wild-type normal distribution from other components, e.g. the 
-resistant sub-population, the regression is repeated using successive subsets of 
-data, until an optimal fit between the subset and the normal probability 
-function is found.
+In order to separate the wild-type normal distribution from other components, e.g. the resistant sub-population, the regression is repeated using successive subsets of data, until an optimal fit between the subset and the normal probability function is found.
 
 Firstly we load and inspect the test data set, included in the package:
 
@@ -270,7 +258,7 @@ Finally
 Acknowledgments
 ===============
 
-Many thanks to ...... for the data set, to ...... for stimulation and discussion and
+Many thanks to the EUCAST consortium and to the Hydrobiology work group of TU Dresden for test data sets, to John Turnidge, Stefanie Hess, Damiano Cacace. David Kneis and Thomas Berendonk for stimulation and discussion and
 to the R Core Team [@RCore2015] for developing and maintaining **R**. 
 This documentation was written using **knitr** [@knitr2014] and **rmarkdown**
 [@rmarkdown].
