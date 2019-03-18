@@ -112,8 +112,8 @@ fit_nn <- function(breaks, counts, parms, sd_min=0, ...) {
 #'
 fit_enn <- function(breaks, counts, parms, sd_min=0, ...) {
   llunimix <- function(L1, L2, rate1, mean2, sd2, mean3, sd3) {
-    if (L1 < 0 | L2 < 0 | abs(L1) + abs(L2) > 1 | rate1 <= sd_min
-        | rate1 <= sd_min | sd2 <= sd_min | sd3 <= sd_min) { # test: rate or sd <= sd_min
+    if (L1 < 0 | L2 < 0 | abs(L1) + abs(L2) > 1 | rate1 <= sd_min |
+      sd2 <= sd_min | sd3 <= sd_min) { # test: rate or sd <= sd_min
       ## penalty for wrong parameters
       1e-9 * .Machine$double.xmax
     } else {
