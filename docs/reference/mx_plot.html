@@ -132,7 +132,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>obj</th>
-      <td><p>Object of class <code>mxObj</code>.</p></td>
+      <td><p>Object of class <code><a href='mxObj-methods.html'>mxObj</a></code>.</p></td>
     </tr>
     <tr>
       <th>breaks</th>
@@ -174,15 +174,15 @@
 <span class='no'>counts</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>36</span>, <span class='fl'>0</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>4</span>, <span class='fl'>8</span>, <span class='fl'>9</span>, <span class='fl'>14</span>, <span class='fl'>10</span>, <span class='fl'>9</span>, <span class='fl'>3</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>,
             <span class='fl'>4</span>, <span class='fl'>8</span>, <span class='fl'>20</span>, <span class='fl'>45</span>, <span class='fl'>40</span>, <span class='fl'>54</span>, <span class='fl'>41</span>, <span class='fl'>22</span>, <span class='fl'>8</span>, <span class='fl'>3</span>, <span class='fl'>3</span>, <span class='fl'>0</span>, <span class='fl'>0</span>,<span class='fl'>0</span>)
 
-<span class='no'>observations</span> <span class='kw'>&lt;-</span> <span class='fu'>unbin</span>(<span class='no'>breaks</span>[-<span class='fl'>1</span>], <span class='no'>counts</span>) <span class='co'># upper class boundaries</span>
+<span class='no'>observations</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='unbin.html'>unbin</a></span>(<span class='no'>breaks</span>[-<span class='fl'>1</span>], <span class='no'>counts</span>) <span class='co'># upper class boundaries</span>
 
-(<span class='no'>comp</span> <span class='kw'>&lt;-</span> <span class='fu'>mx_guess_components</span>(<span class='no'>observations</span>, <span class='kw'>bw</span><span class='kw'>=</span><span class='fl'>2</span>/<span class='fl'>3</span>, <span class='kw'>mincut</span><span class='kw'>=</span><span class='fl'>0.9</span>))</div><div class='output co'>#&gt;        mean        sd         L
+(<span class='no'>comp</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mx_guess_components.html'>mx_guess_components</a></span>(<span class='no'>observations</span>, <span class='kw'>bw</span><span class='kw'>=</span><span class='fl'>2</span>/<span class='fl'>3</span>, <span class='kw'>mincut</span><span class='kw'>=</span><span class='fl'>0.9</span>))</div><div class='output co'>#&gt;        mean        sd         L
 #&gt; 1  1.040054 0.7032986 0.1055751
 #&gt; 2  7.805322 2.0509038 0.1775396
 #&gt; 3 19.505968 2.1153693 0.7168853</div><div class='input'>
-<span class='no'>obj</span> <span class='kw'>&lt;-</span> <span class='fu'>mxObj</span>(<span class='no'>comp</span>, <span class='kw'>left</span><span class='kw'>=</span><span class='st'>"e"</span>)
+<span class='no'>obj</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mxObj-methods.html'>mxObj</a></span>(<span class='no'>comp</span>, <span class='kw'>left</span><span class='kw'>=</span><span class='st'>"e"</span>)
 
-<span class='no'>obj2</span> <span class='kw'>&lt;-</span> <span class='fu'>mx_metafit</span>(<span class='no'>breaks</span>, <span class='no'>counts</span>, <span class='no'>obj</span>)
+<span class='no'>obj2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mx_metafit.html'>mx_metafit</a></span>(<span class='no'>breaks</span>, <span class='no'>counts</span>, <span class='no'>obj</span>)
 
 <span class='fu'>mx_plot</span>(<span class='no'>obj2</span>, <span class='no'>breaks</span>, <span class='no'>counts</span>, <span class='kw'>disc</span><span class='kw'>=</span><span class='fl'>5.5</span>)</div><div class='input'>
 <span class='co'>## simplification for fitted objects with save.data = TRUE</span>

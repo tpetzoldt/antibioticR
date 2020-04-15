@@ -150,7 +150,7 @@
       <td><p>vector of antibiotic resistance observations, given as zone
 diameter (zd) or log of minimum inhibitory concentration (mic).
 Note that for <code>abr_density</code> x must contain raw observations,
-not frequencies, cf. <code>unbin</code>, while for
+not frequencies, cf. <code><a href='unbin.html'>unbin</a></code>, while for
 abr_cumdens x and y contain binned data. If y is omitted, x must contain a
 two-column matrix with value and frequency.</p></td>
     </tr>
@@ -242,23 +242,23 @@ estimated, see <code><a href='https://rdrr.io/r/stats/density.html'>density</a><
 <span class='no'>edf</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/density.html'>density</a></span>(<span class='no'>mids</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>relfreq</span>, <span class='kw'>bw</span><span class='kw'>=</span><span class='fl'>2</span>/<span class='fl'>3</span>, <span class='kw'>from</span><span class='kw'>=</span><span class='fl'>0</span>, <span class='kw'>to</span><span class='kw'>=</span><span class='fl'>40</span>)
 <span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>(<span class='no'>edf</span>)</div><div class='input'>
 <span class='co'>## ----- same, but with different interface -----</span>
-<span class='no'>edf2</span> <span class='kw'>&lt;-</span> <span class='fu'>abr_density</span>(<span class='fu'>unbin</span>(<span class='no'>mids</span>, <span class='no'>freq</span>), <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>bw</span><span class='kw'>=</span><span class='fl'>2</span>/<span class='fl'>3</span>))
+<span class='no'>edf2</span> <span class='kw'>&lt;-</span> <span class='fu'>abr_density</span>(<span class='fu'><a href='unbin.html'>unbin</a></span>(<span class='no'>mids</span>, <span class='no'>freq</span>), <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>bw</span><span class='kw'>=</span><span class='fl'>2</span>/<span class='fl'>3</span>))
 <span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>(<span class='no'>edf2</span>, <span class='kw'>col</span><span class='kw'>=</span><span class='st'>"red"</span>, <span class='kw'>lty</span><span class='kw'>=</span><span class='st'>"dotted"</span>)</div><div class='input'>
 <span class='co'>## ----- boundary corrected density from package evmix -----</span>
-<span class='no'>bcd</span> <span class='kw'>&lt;-</span> <span class='fu'>abr_density</span>(<span class='fu'>unbin</span>(<span class='no'>mids</span>, <span class='no'>freq</span>), <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"evmix"</span>)
+<span class='no'>bcd</span> <span class='kw'>&lt;-</span> <span class='fu'>abr_density</span>(<span class='fu'><a href='unbin.html'>unbin</a></span>(<span class='no'>mids</span>, <span class='no'>freq</span>), <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"evmix"</span>)
 <span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>(<span class='no'>bcd</span>, <span class='kw'>col</span><span class='kw'>=</span><span class='st'>"blue"</span>, <span class='kw'>lty</span><span class='kw'>=</span><span class='st'>"dotted"</span>)</div><div class='img'><img src='abr_densfunctions-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## ===== maximum of density function (uses optimizer) =====</span>
-<span class='fu'>maxdens</span>(<span class='fu'>unbin</span>(<span class='no'>mids</span>, <span class='no'>freq</span>))</div><div class='output co'>#&gt; final solution</div><div class='output co'>#&gt; $x
+<span class='fu'>maxdens</span>(<span class='fu'><a href='unbin.html'>unbin</a></span>(<span class='no'>mids</span>, <span class='no'>freq</span>))</div><div class='output co'>#&gt; final solution</div><div class='output co'>#&gt; $x
 #&gt; [1] 25.24166
 #&gt; 
 #&gt; $y
 #&gt; [1] 0.1259965
 #&gt; </div><div class='input'>
 <span class='co'>## ----- cumulative density -----</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='fu'>abr_cumdens</span>(<span class='fu'>unbin</span>(<span class='no'>mids</span>, <span class='no'>freq</span>), <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"fmm"</span>), <span class='kw'>type</span><span class='kw'>=</span><span class='st'>"l"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: collapsing to unique 'x' values</span></div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='fu'>abr_cumdens</span>(<span class='fu'><a href='unbin.html'>unbin</a></span>(<span class='no'>mids</span>, <span class='no'>freq</span>), <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"fmm"</span>), <span class='kw'>type</span><span class='kw'>=</span><span class='st'>"l"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: collapsing to unique 'x' values</span></div><div class='input'>
 <span class='co'>## ----- quantiles -----</span>
 <span class='no'>prob</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.5</span>, <span class='fl'>0.95</span>, <span class='fl'>0.99</span>)
-<span class='fu'><a href='https://rdrr.io/r/graphics/abline.html'>abline</a></span>(<span class='kw'>h</span><span class='kw'>=</span><span class='no'>prob</span>, <span class='kw'>lty</span><span class='kw'>=</span><span class='st'>"dotted"</span>)</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/abline.html'>abline</a></span>(<span class='kw'>v</span><span class='kw'>=</span><span class='fu'>abr_cumdensquant</span>(<span class='fu'>unbin</span>(<span class='no'>mids</span>, <span class='no'>freq</span>),
+<span class='fu'><a href='https://rdrr.io/r/graphics/abline.html'>abline</a></span>(<span class='kw'>h</span><span class='kw'>=</span><span class='no'>prob</span>, <span class='kw'>lty</span><span class='kw'>=</span><span class='st'>"dotted"</span>)</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/abline.html'>abline</a></span>(<span class='kw'>v</span><span class='kw'>=</span><span class='fu'>abr_cumdensquant</span>(<span class='fu'><a href='unbin.html'>unbin</a></span>(<span class='no'>mids</span>, <span class='no'>freq</span>),
                           <span class='kw'>p</span><span class='kw'>=</span><span class='no'>prob</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"fmm"</span>), <span class='kw'>lty</span><span class='kw'>=</span><span class='st'>"dotted"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: collapsing to unique 'x' values</span></div><div class='img'><img src='abr_densfunctions-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span>(<span class='no'>opar</span>)</div></pre>
   </div>

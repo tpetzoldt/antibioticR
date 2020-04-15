@@ -136,7 +136,7 @@ parameters with columns mean, sd, L.</p>
     <tr>
       <th>p</th>
       <td><p>data frame of distribution parameters (mean, sd, L) returned by
-<code>mx_guess_components</code></p></td>
+<code><a href='mx_guess_components.html'>mx_guess_components</a></code></p></td>
     </tr>
     <tr>
       <th>np</th>
@@ -166,7 +166,7 @@ considered as close to zero</p></td>
 
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>123</span>)
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Exponential.html'>rexp</a></span>(<span class='fl'>20</span>, <span class='kw'>rate</span><span class='kw'>=</span><span class='fl'>1</span>), <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>30</span>, <span class='fl'>10</span>, <span class='fl'>1</span>), <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>10</span>,<span class='fl'>15</span>,<span class='fl'>.2</span>), <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>50</span>, <span class='fl'>20</span>, <span class='fl'>2</span>))
-<span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span>(<span class='no'>x</span>, <span class='kw'>breaks</span><span class='kw'>=</span><span class='fl'>20</span>)</div><div class='img'><img src='zd_main_components-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'>mx_guess_components</span>(<span class='no'>x</span>)
+<span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span>(<span class='no'>x</span>, <span class='kw'>breaks</span><span class='kw'>=</span><span class='fl'>20</span>)</div><div class='img'><img src='zd_main_components-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mx_guess_components.html'>mx_guess_components</a></span>(<span class='no'>x</span>)
 
 (<span class='no'>ret</span> <span class='kw'>&lt;-</span> <span class='fu'>zd_main_components</span>(<span class='no'>p</span>, <span class='kw'>np</span><span class='kw'>=</span><span class='fl'>3</span>))</div><div class='output co'>#&gt;         mean       sd         L type
 #&gt; 1  0.8086896 1.389070 0.1817581    e

@@ -51,7 +51,7 @@ Documentation
 
 The documentation is still to be written. An initial version is found here:
 
-https://tpetzoldt.github.io/antibioticR/doc/Introduction.html
+https://tpetzoldt.github.io/antibioticR/articles/Introduction.html
 
 Original author
 ---------------
