@@ -4,8 +4,7 @@
 \alias{reformat_eucast}
 \title{Reformat EUCAST crosstabe format into data base formats}
 \usage{
-reformat_eucast(data, type = c("ZD", "MIC"), melt = TRUE,
-  unbin = FALSE)
+reformat_eucast(data, type = c("ZD", "MIC"), melt = TRUE, unbin = FALSE)
 }
 \arguments{
 \item{data}{data frame representing an EUCAST cross table or a result from

@@ -11,7 +11,7 @@ Description: Antibiotic resistant bacteria are a serious threat to human health.
   data, especially minimal inhibitory concentration ('MIC') and inhibition zone
   diameters ('ZD').
 License: GPL (>= 2)
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1
 Depends: reshape2, methods
 Imports: bbmle, evmix
 Suggests: knitr, dplyr, ggplot2, shiny, rhandsontable

@@ -11,18 +11,22 @@
 \usage{
 mx_parmlist_sort(p)
 
-mx_parmlist_select(p, N = 1, item = c("L", "mean", "sd"),
-  ascending = TRUE)
+mx_parmlist_select(p, N = 1, item = c("L", "mean", "sd"), ascending = TRUE)
 
 mx_intermediate(p, as.vector = TRUE)
 
 mx_wildtype(p, as.vector = TRUE)
 
-mx_select(obj, type = c("resistant", "wildtype", "intermediate",
-  "hypersensitive", "nonresistant"))
+mx_select(
+  obj,
+  type = c("resistant", "wildtype", "intermediate", "hypersensitive", "nonresistant")
+)
 
-mx_subset(p, type = c("resistant", "wildtype", "intermediate",
-  "hypersensitive", "nonresistant"), as.vector = TRUE)
+mx_subset(
+  p,
+  type = c("resistant", "wildtype", "intermediate", "hypersensitive", "nonresistant"),
+  as.vector = TRUE
+)
 }
 \arguments{
 \item{p}{mixture distribution object or parameter list}

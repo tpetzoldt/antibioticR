@@ -14,8 +14,14 @@
 \alias{fit_ennnnn}
 \title{Fit of Normal and Exponential-Normal Mixtures to Binned Data}
 \usage{
-fit_unimix(breaks, counts, parms, type = c("en", "enn", "ennn", "ennnn",
-  "ennnnn", "n", "nn", "nnn", "nnnn", "nnnnn"), sd_min = 0, ...)
+fit_unimix(
+  breaks,
+  counts,
+  parms,
+  type = c("en", "enn", "ennn", "ennnn", "ennnnn", "n", "nn", "nnn", "nnnn", "nnnnn"),
+  sd_min = 0,
+  ...
+)
 
 fit_n(breaks, counts, parms, sd_min = 0, ...)
 

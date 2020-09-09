@@ -156,6 +156,9 @@ ecoffinder_nls <- function(conc, count, startpar="mode", concentrations=NA, log2
     axis(1, at=seq(-10, 10, 1), labels=FALSE, tick=TRUE, tcl=-0.25)
   }
 
+  ## coeff of determination for the model fit to the identified data subset
+  r2 <- 1 - var(residuals(m_best))/var(data$cumCount[data$conc <= concentrations[i_best]])
+
   res <- new("abr_ecoffinder", data = data,
               concentrations = concentrations, # concentration subsets
               startpar = pstart,
@@ -163,6 +166,7 @@ ecoffinder_nls <- function(conc, count, startpar="mode", concentrations=NA, log2
               fit = m_best,
               models = models,
               coef = pp,
+              r2 = r2, # experimental, this is only the r2 of the remaining data
               quantiles = quant,
               ecoff = ecoff,
               log2 = log2     # whether ecoffs are 2^ecoff transformed or not

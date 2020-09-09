@@ -4,11 +4,13 @@
 \name{micdata}
 \alias{micdata}
 \title{Minimum Inhibitory Concentration (MIC) Data}
-\format{Data frame with two columns:
+\format{
+Data frame with two columns:
 \describe{
   \item{conc}{vector of antibiotic concentrations}
   \item{freq}{frequency of detected MIC concentrations}
-}}
+}
+}
 \source{
 \url{https://clsi.org/education/microbiology/ecoffinder/}
 }

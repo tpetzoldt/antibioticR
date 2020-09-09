@@ -4,8 +4,16 @@
 \alias{mx_plot}
 \title{Plot Components of Mixture Distribution}
 \usage{
-mx_plot(obj, breaks, counts, disc = 0, ecoff.prob = 0.01,
-  main = "Subpopulations", length.out = 200, ...)
+mx_plot(
+  obj,
+  breaks,
+  counts,
+  disc = 0,
+  ecoff.prob = 0.01,
+  main = "Subpopulations",
+  length.out = 200,
+  ...
+)
 }
 \arguments{
 \item{obj}{Object of class \code{\link{mxObj}}.}

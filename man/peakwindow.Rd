@@ -4,8 +4,14 @@
 \alias{peakwindow}
 \title{Identify Peaks in Multimodal Density Curves and Time Series}
 \usage{
-peakwindow(x, y = NULL, xstart = 0, xend = max(x), minpeak = 0.1,
-  mincut = 0.382)
+peakwindow(
+  x,
+  y = NULL,
+  xstart = 0,
+  xend = max(x),
+  minpeak = 0.1,
+  mincut = 0.382
+)
 }
 \arguments{
 \item{x}{x coordinate of a set of points.}

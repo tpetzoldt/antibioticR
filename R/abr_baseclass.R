@@ -28,6 +28,7 @@ setClass("abr_ecoffinder",
            #fit = "nls",     # todo: is "nls", should extend "list"
            models = "list",
            #coeff = "numeric",
+           r2 = "numeric", # experimental
            quantiles = "numeric",
            ecoff = "numeric",
            log2 = "logical"     # whether ecoffs are 2^ecoff transformed or not

@@ -4,8 +4,14 @@
 \alias{ecoffinder_nls}
 \title{Find Cutoff Value by Nonlinear Regression to Truncated Data}
 \usage{
-ecoffinder_nls(conc, count, startpar = "mode", concentrations = NA,
-  log2 = TRUE, plot = TRUE)
+ecoffinder_nls(
+  conc,
+  count,
+  startpar = "mode",
+  concentrations = NA,
+  log2 = TRUE,
+  plot = TRUE
+)
 }
 \arguments{
 \item{conc}{concentration of the antibiotic}
@@ -66,6 +72,6 @@ Turnidge, J., Kahlmeter, G., Kronvall, G. (2006) Statistical characterization of
   \doi{10.1111/j.1469-0691.2006.01377.x}
 }
 \seealso{
-\code{\link{ecoffinder_startpar}} for heuristic method to gues start parameters\cr
+\code{\link{ecoffinder_startpar}} for heuristic methods to guess start parameters\cr
   \code{\link{ECOFFinder}} for an interactice shiny app
 }
