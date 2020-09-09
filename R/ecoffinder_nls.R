@@ -156,20 +156,6 @@ ecoffinder_nls <- function(conc, count, startpar="mode", concentrations=NA, log2
     axis(1, at=seq(-10, 10, 1), labels=FALSE, tick=TRUE, tcl=-0.25)
   }
 
-  # res <- list(data = data,
-  #      concentrations = concentrations, # concentration subsets
-  #      startpar = pstart,
-  #      i_best = i_best,
-  #      fit = m_best,
-  #      models = models,
-  #      coeff = pp,
-  #      quantiles = quant,
-  #      ecoff = ecoff,
-  #      log2 = log2     # whether ecoffs are 2^ecoff transformed or not
-  # )
-  # class(res) <- c("list", "abrECOFFinder")
-  # res
-
   res <- new("abr_ecoffinder", data = data,
               concentrations = concentrations, # concentration subsets
               startpar = pstart,
