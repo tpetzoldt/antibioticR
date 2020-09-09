@@ -11,6 +11,7 @@
 \alias{startpar,abr_ecoffinder-method}
 \alias{models,abr_ecoffinder-method}
 \alias{ecoff,abr_ecoffinder-method}
+\alias{rsquared,abr_ecoffinder-method}
 \title{Accessor Methods of Package \pkg{antibioticR}.}
 \usage{
 obs(object, ...)
@@ -32,6 +33,8 @@ obs(object, ...)
 \S4method{models}{abr_ecoffinder}(object, ...)
 
 \S4method{ecoff}{abr_ecoffinder}(object, ...)
+
+\S4method{rsquared}{abr_ecoffinder}(object, ...)
 }
 \arguments{
 \item{object}{name of a 'antibioticR' object.

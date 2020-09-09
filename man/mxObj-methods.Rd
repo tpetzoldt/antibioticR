@@ -3,6 +3,7 @@
 \name{fit}
 \alias{fit}
 \alias{ecoff}
+\alias{rsquared}
 \alias{startpar}
 \alias{models}
 \alias{coef,mxObj-method}
@@ -20,6 +21,8 @@
 fit(object, ...)
 
 ecoff(object, ...)
+
+rsquared(object, ...)
 
 startpar(object, ...)
 

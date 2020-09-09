@@ -29,6 +29,11 @@ setGeneric("ecoff", function(object, ...) standardGeneric("ecoff"))
 
 #' @rdname mxObj-methods
 #'
+setGeneric("rsquared", function(object, ...) standardGeneric("rsquared"))
+
+
+#' @rdname mxObj-methods
+#'
 setGeneric("startpar", function(object, ...) standardGeneric("startpar"))
 
 #' @rdname mxObj-methods
@@ -127,5 +132,16 @@ setMethod("ecoff", "abr_ecoffinder",
             #if (object@log2)
               #cat("Note: log2 used for the transformation of MIC data!\n")
             object@ecoff
+          }
+)
+
+#' @rdname abr_methods
+#' @exportMethod rsquared
+#'
+setMethod("rsquared", "abr_ecoffinder",
+          function(object, ...) {
+            #if (object@log2)
+            #cat("Note: log2 used for the transformation of MIC data!\n")
+            object@r2
           }
 )
