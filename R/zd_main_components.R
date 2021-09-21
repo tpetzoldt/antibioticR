@@ -8,10 +8,11 @@
 #' @param p data frame of distribution parameters (mean, sd, L) returned by
 #'   \code{\link{mx_guess_components}}
 #' @param np number of desired components
-#' @param near_zero heuristic upper boundary of the interval that is
-#'   considered as close to zero
+#' @param near_zero heuristic upper boundary of the zone diameter interval that is
+#'   considered as close to zero. Components with mean value below will be considered
+#'   as resistant subpopulation.
 #'
-#' @details The algorithm is pecifically intended to zone diameter (ZD)
+#' @details The algorithm is specifically intended to zone diameter (ZD)
 #'   distributions where the leftmost (resistant) subpopulation is considered
 #'   exponentially distributed, while the others (intermediate, wild-type)
 #'   are considered approximately normal.
@@ -55,4 +56,5 @@ zd_main_components <- function(p, np=3, near_zero = 3) {
     ibest <- which(rank(-p$L) %in% 1:(np-1))
     ret <- p[ibest, ]
   }
+  ret
 }
