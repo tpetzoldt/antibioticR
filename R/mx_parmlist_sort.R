@@ -6,7 +6,7 @@
 #' @param N number of components
 #' @param item parameter name used for sorting and selection (e.g. 'L', 'mean', 'sd')
 #' @param type kind of subset
-#' @param ascending ascending  (TRUE) ode descending (FALSE) order
+#' @param ascending ascending  (TRUE) or descending (FALSE) order
 #' @param as.vector if TRUE, result is returned as a vector, otherwise as list
 #' @param ... reserved for future extensions
 #'
