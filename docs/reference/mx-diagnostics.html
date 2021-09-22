@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">antibioticR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3</span>
       </span>
     </div>
 
@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -124,10 +124,10 @@
     <p>Return diagnostics after on a mixture distribution object fittted with 'mx_metafit'</p>
     </div>
 
-    <pre class="usage"><span class='fu'>diagnostics</span>(<span class='no'>obj</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>diagnostics</span><span class='op'>(</span><span class='va'>obj</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for mxMle</span>
-<span class='fu'>diagnostics</span>(<span class='no'>obj</span>, <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>counts</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>diagnostics</span><span class='op'>(</span><span class='va'>obj</span>, breaks <span class='op'>=</span> <span class='cn'>NULL</span>, counts <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -156,19 +156,21 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='no'>breaks</span> <span class='kw'>&lt;-</span> <span class='fl'>0</span>:<span class='fl'>28</span>
-<span class='no'>counts</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>36</span>, <span class='fl'>0</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>4</span>, <span class='fl'>8</span>, <span class='fl'>9</span>, <span class='fl'>14</span>, <span class='fl'>10</span>, <span class='fl'>9</span>, <span class='fl'>3</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>,
-            <span class='fl'>4</span>, <span class='fl'>8</span>, <span class='fl'>20</span>, <span class='fl'>45</span>, <span class='fl'>40</span>, <span class='fl'>54</span>, <span class='fl'>41</span>, <span class='fl'>22</span>, <span class='fl'>8</span>, <span class='fl'>3</span>, <span class='fl'>3</span>, <span class='fl'>0</span>, <span class='fl'>0</span>,<span class='fl'>0</span>)
+<span class='va'>breaks</span> <span class='op'>&lt;-</span> <span class='fl'>0</span><span class='op'>:</span><span class='fl'>28</span>
+<span class='va'>counts</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>36</span>, <span class='fl'>0</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>4</span>, <span class='fl'>8</span>, <span class='fl'>9</span>, <span class='fl'>14</span>, <span class='fl'>10</span>, <span class='fl'>9</span>, <span class='fl'>3</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>,
+            <span class='fl'>4</span>, <span class='fl'>8</span>, <span class='fl'>20</span>, <span class='fl'>45</span>, <span class='fl'>40</span>, <span class='fl'>54</span>, <span class='fl'>41</span>, <span class='fl'>22</span>, <span class='fl'>8</span>, <span class='fl'>3</span>, <span class='fl'>3</span>, <span class='fl'>0</span>, <span class='fl'>0</span>,<span class='fl'>0</span><span class='op'>)</span>
 
-<span class='no'>observations</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='unbin.html'>unbin</a></span>(<span class='no'>breaks</span>[-<span class='fl'>1</span>], <span class='no'>counts</span>) <span class='co'># upper class boundaries</span>
+<span class='va'>observations</span> <span class='op'>&lt;-</span> <span class='fu'><a href='unbin.html'>unbin</a></span><span class='op'>(</span><span class='va'>breaks</span><span class='op'>[</span><span class='op'>-</span><span class='fl'>1</span><span class='op'>]</span>, <span class='va'>counts</span><span class='op'>)</span> <span class='co'># upper class boundaries</span>
 
-(<span class='no'>comp</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mx_guess_components.html'>mx_guess_components</a></span>(<span class='no'>observations</span>, <span class='kw'>bw</span><span class='kw'>=</span><span class='fl'>2</span>/<span class='fl'>3</span>, <span class='kw'>mincut</span><span class='kw'>=</span><span class='fl'>0.9</span>))</div><div class='output co'>#&gt;        mean        sd         L
+<span class='op'>(</span><span class='va'>comp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='mx_guess_components.html'>mx_guess_components</a></span><span class='op'>(</span><span class='va'>observations</span>, bw<span class='op'>=</span><span class='fl'>2</span><span class='op'>/</span><span class='fl'>3</span>, mincut<span class='op'>=</span><span class='fl'>0.9</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;        mean        sd         L
 #&gt; 1  1.040054 0.7032986 0.1055751
 #&gt; 2  7.805322 2.0509038 0.1775396
-#&gt; 3 19.505968 2.1153693 0.7168853</div><div class='input'><span class='no'>obj</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mxObj-methods.html'>mxObj</a></span>(<span class='no'>comp</span>, <span class='kw'>left</span><span class='kw'>=</span><span class='st'>"e"</span>)
-<span class='no'>ret</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mx_metafit.html'>mx_metafit</a></span>(<span class='no'>breaks</span>, <span class='no'>counts</span>, <span class='no'>obj</span>)
+#&gt; 3 19.505968 2.1153693 0.7168853</div><div class='input'><span class='va'>obj</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fit.html'>mxObj</a></span><span class='op'>(</span><span class='va'>comp</span>, left<span class='op'>=</span><span class='st'>"e"</span><span class='op'>)</span>
+<span class='va'>ret</span> <span class='op'>&lt;-</span> <span class='fu'><a href='mx_metafit.html'>mx_metafit</a></span><span class='op'>(</span><span class='va'>breaks</span>, <span class='va'>counts</span>, <span class='va'>obj</span><span class='op'>)</span>
 
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>ret</span>)       <span class='co'># general summary</span></div><div class='output co'>#&gt; Maximum likelihood estimation
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>ret</span><span class='op'>)</span>       <span class='co'># general summary</span>
+</div><div class='output co'>#&gt; Maximum likelihood estimation
 #&gt; 
 #&gt; Call:
 #&gt; mle2(minuslogl = llunimix, start = parms)
@@ -185,7 +187,8 @@
 #&gt; ---
 #&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #&gt; 
-#&gt; -2 log L: 1873.47 </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cov2cor</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/vcov.html'>vcov</a></span>(<span class='no'>ret</span>)) <span class='co'># correlation matrix of parameters</span></div><div class='output co'>#&gt;                  L1            L2         rate1         mean2           sd2
+#&gt; -2 log L: 1873.47 </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cov2cor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/vcov.html'>vcov</a></span><span class='op'>(</span><span class='va'>ret</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># correlation matrix of parameters</span>
+</div><div class='output co'>#&gt;                  L1            L2         rate1         mean2           sd2
 #&gt; L1     1.000000e+00 -1.614179e-01  1.899205e-05  4.404988e-03 -0.0129406201
 #&gt; L2    -1.614179e-01  1.000000e+00 -2.322614e-05  3.204188e-02  0.0689235221
 #&gt; rate1  1.899205e-05 -2.322614e-05  1.000000e+00  3.896354e-05 -0.0001705144
@@ -200,13 +203,14 @@
 #&gt; mean2  4.706817e-02 -8.413941e-02
 #&gt; sd2    7.681201e-02 -1.346088e-01
 #&gt; mean3  1.000000e+00 -5.204826e-02
-#&gt; sd3   -5.204826e-02  1.000000e+00</div><div class='input'><span class='fu'>diagnostics</span>(<span class='no'>ret</span>)   <span class='co'># additional diagnostics</span></div><div class='output co'>#&gt; 
+#&gt; sd3   -5.204826e-02  1.000000e+00</div><div class='input'><span class='fu'>diagnostics</span><span class='op'>(</span><span class='va'>ret</span><span class='op'>)</span>   <span class='co'># additional diagnostics</span>
+</div><div class='output co'>#&gt; 
 #&gt; Convergence =  0 :  Successful completion of optim 
 #&gt; 
 #&gt; Agreement of (cumulative) distribution to data:
 #&gt; 
+#&gt; cor(observed, predicted)):          0.9998638 
 #&gt; rsquared (explained variance):      0.9997274 
-#&gt; rsquared (cor(observed,predicted)): 0.9997277 
 #&gt; Nash Sutcliffe Efficiency:          0.9997274 
 #&gt; Log Likelihood:                     -936.735 
 #&gt; AIC:                                1887.47 
@@ -229,7 +233,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

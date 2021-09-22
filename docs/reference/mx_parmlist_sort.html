@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">antibioticR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3</span>
       </span>
     </div>
 
@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -124,20 +124,24 @@
     <p>Sort and Select Distribution Components</p>
     </div>
 
-    <pre class="usage"><span class='fu'>mx_parmlist_sort</span>(<span class='no'>p</span>)
+    <pre class="usage"><span class='fu'>mx_parmlist_sort</span><span class='op'>(</span><span class='va'>p</span><span class='op'>)</span>
 
-<span class='fu'>mx_parmlist_select</span>(<span class='no'>p</span>, <span class='kw'>N</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>item</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"L"</span>, <span class='st'>"mean"</span>, <span class='st'>"sd"</span>),
-  <span class='kw'>ascending</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>mx_parmlist_select</span><span class='op'>(</span><span class='va'>p</span>, N <span class='op'>=</span> <span class='fl'>1</span>, item <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"L"</span>, <span class='st'>"mean"</span>, <span class='st'>"sd"</span><span class='op'>)</span>, ascending <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
-<span class='fu'>mx_intermediate</span>(<span class='no'>p</span>, <span class='kw'>as.vector</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>mx_intermediate</span><span class='op'>(</span><span class='va'>p</span>, as.vector <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
-<span class='fu'>mx_wildtype</span>(<span class='no'>p</span>, <span class='kw'>as.vector</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>mx_wildtype</span><span class='op'>(</span><span class='va'>p</span>, as.vector <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
-<span class='fu'>mx_select</span>(<span class='no'>obj</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"resistant"</span>, <span class='st'>"wildtype"</span>, <span class='st'>"intermediate"</span>,
-  <span class='st'>"hypersensitive"</span>, <span class='st'>"nonresistant"</span>))
+<span class='fu'>mx_select</span><span class='op'>(</span>
+  <span class='va'>obj</span>,
+  type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"resistant"</span>, <span class='st'>"wildtype"</span>, <span class='st'>"intermediate"</span>, <span class='st'>"hypersensitive"</span>, <span class='st'>"nonresistant"</span><span class='op'>)</span>
+<span class='op'>)</span>
 
-<span class='fu'>mx_subset</span>(<span class='no'>p</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"resistant"</span>, <span class='st'>"wildtype"</span>, <span class='st'>"intermediate"</span>,
-  <span class='st'>"hypersensitive"</span>, <span class='st'>"nonresistant"</span>), <span class='kw'>as.vector</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+<span class='fu'>mx_subset</span><span class='op'>(</span>
+  <span class='va'>p</span>,
+  type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"resistant"</span>, <span class='st'>"wildtype"</span>, <span class='st'>"intermediate"</span>, <span class='st'>"hypersensitive"</span>, <span class='st'>"nonresistant"</span><span class='op'>)</span>,
+  as.vector <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -156,7 +160,7 @@
     </tr>
     <tr>
       <th>ascending</th>
-      <td><p>ascending  (TRUE) ode descending (FALSE) order</p></td>
+      <td><p>ascending  (TRUE) or descending (FALSE) order</p></td>
     </tr>
     <tr>
       <th>as.vector</th>
@@ -197,7 +201,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

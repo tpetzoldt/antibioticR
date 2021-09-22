@@ -74,7 +74,7 @@ binned to classes." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">antibioticR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3</span>
       </span>
     </div>
 
@@ -82,7 +82,7 @@ binned to classes." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -128,7 +128,7 @@ a vector. The function is intended to reconstruct raw data from data
 binned to classes.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>unbin</span>(<span class='no'>x</span>, <span class='no'>freq</span>)</pre>
+    <pre class="usage"><span class='fu'>unbin</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>freq</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -150,8 +150,9 @@ binned to classes.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>a</span><span class='kw'>=</span><span class='fl'>1</span>:<span class='fl'>3</span>, <span class='kw'>b</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span>), <span class='kw'>freq</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>5</span>, <span class='fl'>3</span>))
-<span class='fu'>unbin</span>(<span class='no'>x</span>, <span class='no'>x</span>$<span class='no'>freq</span>)</div><div class='output co'>#&gt;     a b freq
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>a<span class='op'>=</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, b<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span><span class='op'>)</span>, freq<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>5</span>, <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>unbin</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>x</span><span class='op'>$</span><span class='va'>freq</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;     a b freq
 #&gt; 1   1 a    2
 #&gt; 1.1 1 a    2
 #&gt; 2   2 b    5
@@ -162,12 +163,14 @@ binned to classes.</p>
 #&gt; 3   3 c    3
 #&gt; 3.1 3 c    3
 #&gt; 3.2 3 c    3</div><div class='input'>
-<span class='no'>zd</span> <span class='kw'>&lt;-</span> <span class='fl'>6</span>:<span class='fl'>35</span>
+<span class='va'>zd</span> <span class='op'>&lt;-</span> <span class='fl'>6</span><span class='op'>:</span><span class='fl'>35</span>
 
-<span class='no'>counts</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>155</span>, <span class='fl'>0</span>, <span class='fl'>8</span>, <span class='fl'>12</span>, <span class='fl'>17</span>, <span class='fl'>35</span>, <span class='fl'>37</span>, <span class='fl'>66</span>, <span class='fl'>42</span>, <span class='fl'>39</span>, <span class='fl'>13</span>, <span class='fl'>4</span>, <span class='fl'>4</span>, <span class='fl'>8</span>, <span class='fl'>19</span>, <span class='fl'>36</span>,
-            <span class='fl'>80</span>, <span class='fl'>205</span>, <span class='fl'>188</span>, <span class='fl'>219</span>, <span class='fl'>170</span>, <span class='fl'>104</span>, <span class='fl'>32</span>, <span class='fl'>13</span>, <span class='fl'>12</span>, <span class='fl'>0</span>, <span class='fl'>3</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>0</span>)
+<span class='va'>counts</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>155</span>, <span class='fl'>0</span>, <span class='fl'>8</span>, <span class='fl'>12</span>, <span class='fl'>17</span>, <span class='fl'>35</span>, <span class='fl'>37</span>, <span class='fl'>66</span>, <span class='fl'>42</span>, <span class='fl'>39</span>, <span class='fl'>13</span>, <span class='fl'>4</span>, <span class='fl'>4</span>, <span class='fl'>8</span>, <span class='fl'>19</span>, <span class='fl'>36</span>,
+            <span class='fl'>80</span>, <span class='fl'>205</span>, <span class='fl'>188</span>, <span class='fl'>219</span>, <span class='fl'>170</span>, <span class='fl'>104</span>, <span class='fl'>32</span>, <span class='fl'>13</span>, <span class='fl'>12</span>, <span class='fl'>0</span>, <span class='fl'>3</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>0</span><span class='op'>)</span>
 
-<span class='no'>observations</span> <span class='kw'>&lt;-</span> <span class='fu'>unbin</span>(<span class='no'>zd</span>, <span class='no'>counts</span>)</div></pre>
+<span class='va'>observations</span> <span class='op'>&lt;-</span> <span class='fu'>unbin</span><span class='op'>(</span><span class='va'>zd</span>, <span class='va'>counts</span><span class='op'>)</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -183,7 +186,7 @@ binned to classes.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
