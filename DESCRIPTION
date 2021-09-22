@@ -1,8 +1,8 @@
 Package: antibioticR
 Type: Package
 Title: Analysis of Antibiotic Resistance Data
-Version: 0.3.2
-Date: 2019-03-12
+Version: 0.3.3
+Date: 2021-09-22
 Author: Thomas Petzoldt
 Encoding: UTF-8
 Maintainer: Thomas Petzoldt <thomas.petzoldt@tu-dresden.de>
@@ -14,7 +14,7 @@ License: GPL (>= 2)
 RoxygenNote: 7.1.1
 Depends: reshape2, methods
 Imports: bbmle, evmix
-Suggests: knitr, dplyr, ggplot2, shiny, rhandsontable
+Suggests: knitr, dplyr, ggplot2, shiny, rhandsontable, rmarkdown
 VignetteBuilder: knitr
 Collate: 
     'antibioticR-package.R'

@@ -35,7 +35,7 @@ mx_subset(
 
 \item{item}{parameter name used for sorting and selection (e.g. 'L', 'mean', 'sd')}
 
-\item{ascending}{ascending  (TRUE) ode descending (FALSE) order}
+\item{ascending}{ascending  (TRUE) or descending (FALSE) order}
 
 \item{as.vector}{if TRUE, result is returned as a vector, otherwise as list}
 

@@ -12,8 +12,9 @@ zd_main_components(p, np = 3, near_zero = 3)
 
 \item{np}{number of desired components}
 
-\item{near_zero}{heuristic upper boundary of the interval that is
-considered as close to zero}
+\item{near_zero}{heuristic upper boundary of the zone diameter interval that is
+considered as close to zero. Components with mean value below will be considered
+as resistant subpopulation.}
 }
 \value{
 
@@ -24,7 +25,7 @@ exponentially distributed component from a data frame of distribution
 parameters with columns mean, sd, L.
 }
 \details{
-The algorithm is pecifically intended to zone diameter (ZD)
+The algorithm is specifically intended to zone diameter (ZD)
   distributions where the leftmost (resistant) subpopulation is considered
   exponentially distributed, while the others (intermediate, wild-type)
   are considered approximately normal.
