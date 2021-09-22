@@ -49,8 +49,8 @@ setMethod("diagnostics", "mxMle",
 
             ret <- list(
               conv = obj@fit@details$convergence,
+              r_cor = qual$r_cor,
               r2_var = qual$r2_var,
-              r2_cor = qual$r2_cor,
               EF = qual$EF,
               logLik = logLik(obj),
               AIC =AIC(obj),
@@ -72,8 +72,8 @@ setMethod("diagnostics", "mxMle",
             if (ret$conv > 50) cat(obj@fit@details$message, "\n") # thpe-todo: check if correct slot
             cat("\n")
             cat("Agreement of (cumulative) distribution to data:\n\n")
+            cat("cor(observed, predicted)):         ", ret$r_cor, "\n")
             cat("rsquared (explained variance):     ", ret$r2_var, "\n")
-            cat("rsquared (cor(observed,predicted)):", ret$r2_cor, "\n")
             cat("Nash Sutcliffe Efficiency:         ", ret$EF, "\n")
             cat("Log Likelihood:                    ", ret$logLik, "\n")
             cat("AIC:                               ", ret$AIC, "\n")

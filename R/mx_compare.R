@@ -32,8 +32,8 @@ mx_compare <- function(parms, breaks, counts, plot=FALSE, ...) {
   }
 
   list(
+    r_cor = cor(sim, obs),
     r2_var = 1 - var(sim - obs) / var(obs),
-    r2_cor = cor(sim, obs)^2,
     EF     = 1 - sum((sim - obs)^2) / sum((obs - mean(obs))^2)
   )
 }

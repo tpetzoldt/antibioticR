@@ -85,8 +85,8 @@ setMethod("results", "mxMle",
                 q01         = q01,
                 q05         = q05,
                 L_q01       = L_q01,
+                r_cor       = quality$r_cor,
                 r2_var      = quality$r2_var,
-                r2_cor      = quality$r2_cor,
                 EF          = quality$EF
               ))
           }

@@ -82,9 +82,13 @@ After loading the package:
 library("antibioticR")
 ```
 
-we load the data and inspect its structure with `str`:
+we can load example data and inspect its structure with `str`:
 
-...
+```{r eval=FALSE}
+data(micdata)
+str(micdata)
+```
+
 
 Identification of the wild-type population
 ==========================================
@@ -209,6 +213,8 @@ coef(p)
 Mixture approach
 ----------------
 
+The following data set assumes zone diameter data, where the diameter of the antibiotic test disc
+(usually 6mm) was already subtracted.
 
 ```{r}
 breaks <- 0:28
@@ -225,7 +231,8 @@ obj2 <- mx_metafit(breaks, counts, obj)
 ```
 
 The results can then be plotted with function `mx_plot`. The optional `disc` 
-argument adds the diameter of the antibiotic disc.
+argument adds the diameter of the antibiotic disc. We use 5.5mm here instead of 6mm
+to center bins. This assumption may change in the future.
 
 ```{r}
 mx_plot(obj2, disc=5.5, main="", xlab="ZD (mm)")
