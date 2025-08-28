@@ -44,7 +44,7 @@ Demo
 
 A live demo of the ECOFFinder approach can be found	at:
 
-https://weblab.hydro.tu-dresden.de/ecoffinder/
+https://limno-live.hydro.tu-dresden.de/ecoffinder/
 
 Documentation
 -------------
